@@ -1,89 +1,94 @@
-# Product Requirements Document
+# 📋 Product Requirements Document (PRD)
 
-**Project:** Digital Twin Portfolio  
-**Version:** 1.0  
-**Last Updated:** April 2026  
-**Status:** In Progress
-
----
-
-## Overview
-
-This project is a portfolio platform built around the idea of a digital twin. It lets a person create a profile that represents who they are professionally — their skills, past work, and projects — and share it in a way that's easy to read and relevant to whoever is viewing it.
-
-The main difference from a typical portfolio site is that content can be adjusted based on the audience, and an AI layer helps write and organize the information so it's always presented well.
+**Project:** Digital Twin Nexus — Portfolio Edition
+**Version:** 1.0
+**Last Updated:** April 2026
+**Status:** Active Development
 
 ---
 
-## Reference Material
+## 1. Product Overview
 
-These resources were used during planning and research:
+Digital Twin Nexus (Portfolio Edition) is an AI-powered platform that builds and maintains a dynamic digital twin of a person — their skills, work experiences, projects, and achievements. The platform goes beyond a static resume by intelligently organizing content, generating tailored summaries for different audiences, and presenting a person's professional identity in a visually engaging, always-current format.
 
-- https://www.anthropic.com/research
-- https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview
-- https://rxresu.me/
-- https://read.cv/
-- https://jsonresume.org/
-- https://www.linkedin.com/developers/
-- https://uxdesign.cc/portfolio-ux-best-practices
+**Target Users:**
+- Professionals seeking a smarter, more dynamic alternative to a traditional resume or portfolio site
+- Students and early-career individuals wanting to stand out
+- Freelancers and creatives who need to present work to diverse client types
 
 ---
 
-## Functional Requirements
+## 2. AI Study / Reference URLs
+
+The following resources informed the research, design, and AI strategy for this project:
+
+- https://www.anthropic.com/research — AI summarization and personalization techniques
+- https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview — Prompt engineering for profile generation
+- https://openai.com/research/ — LLM use cases for professional content generation
+- https://rxresu.me/ — Open-source resume builder reference
+- https://read.cv/ — Modern portfolio design inspiration
+- https://jsonresume.org/ — Structured resume data format reference
+- https://www.linkedin.com/developers/ — Professional profile data structure reference
+- https://uxdesign.cc/portfolio-ux-best-practices — UX best practices for portfolio presentations
+
+---
+
+## 3. Functional Requirements
 
 | ID | Requirement | Priority |
 |----|-------------|----------|
-| FR-01 | Users can enter their skills, work experience, education, and projects through a form or by uploading a JSON file | High |
-| FR-02 | The system generates a professional summary from the user's input using AI | High |
-| FR-03 | Users can choose a target audience (recruiter, client, collaborator) and the content adjusts to match | High |
-| FR-04 | Each portfolio has a public-facing page that anyone can view without logging in | High |
-| FR-05 | The most relevant skills and projects are shown prominently on the portfolio page | High |
-| FR-06 | Users can edit any section and regenerate the AI summary at any time | Medium |
-| FR-07 | Users can upload project images, PDFs, and add external links | Medium |
-| FR-08 | Each portfolio gets a unique shareable URL | Medium |
-| FR-09 | All AI-generated text is shown to the user for review before it goes live | Medium |
-| FR-10 | Users can export their portfolio as a PDF resume | Low |
-| FR-11 | Portfolio owners can see basic stats like how many times their page was viewed | Low |
+| FR-01 | The system shall allow a user to input their skills, experience, education, and projects via a structured form or JSON upload | High |
+| FR-02 | The system shall use an AI agent to generate a polished, context-aware professional summary from raw user input | High |
+| FR-03 | The system shall allow the user to select an audience type (e.g., recruiter, client, collaborator) and tailor the portfolio presentation accordingly | High |
+| FR-04 | The system shall display the portfolio as a clean, publicly shareable web page | High |
+| FR-05 | The system shall highlight the user's top skills and featured projects prominently on the portfolio page | High |
+| FR-06 | The system shall allow the user to update any section of their profile and re-generate AI summaries on demand | Medium |
+| FR-07 | The system shall support uploading project images, case study PDFs, and external links | Medium |
+| FR-08 | The system shall provide a shareable unique URL for each portfolio | Medium |
+| FR-09 | The system shall log all AI-generated content and allow the user to review, edit, or reject it before publishing | Medium |
+| FR-10 | The system shall support export of the portfolio as a PDF resume | Low |
+| FR-11 | The system shall provide basic analytics (views, clicks on links) for the portfolio owner | Low |
 
 ---
 
-## Non-Functional Requirements
+## 4. Non-Functional Requirements
 
 | ID | Requirement | Target |
 |----|-------------|--------|
-| NFR-01 | Portfolio pages load quickly | Under 2 seconds |
-| NFR-02 | The platform stays available consistently | 99.5% uptime |
-| NFR-03 | The system can handle many users at once | Up to 10,000 active profiles |
-| NFR-04 | User data is stored securely | Encrypted at rest and in transit |
-| NFR-05 | Portfolio pages are readable for all users | Meets WCAG 2.1 AA accessibility standards |
-| NFR-06 | Code is written consistently across the team | Follows conventions in agents.md |
-| NFR-07 | Users control who sees their portfolio | Public or private toggle available |
+| NFR-01 | Performance — Portfolio page load time | < 2 seconds on standard connection |
+| NFR-02 | Availability | 99.5% uptime |
+| NFR-03 | Scalability | Support up to 10,000 active portfolio profiles |
+| NFR-04 | Security | User profile data encrypted at rest (AES-256); HTTPS enforced |
+| NFR-05 | Accessibility | Portfolio pages meet WCAG 2.1 AA standards |
+| NFR-06 | Maintainability | Codebase follows conventions defined in agents.md |
+| NFR-07 | Portability | Deployable on any major cloud provider (AWS, GCP, Azure) |
+| NFR-08 | Privacy | Users control visibility — portfolio can be set to public or private |
 
 ---
 
-## Acceptance Criteria
+## 5. Acceptance Criteria
 
-**AC-01 — Profile Input**  
-When a user fills out the profile form and submits it, their information is saved and shows up in their editor right away.
+### AC-01: Profile Input
+- **Given** a logged-in user, **when** they fill out the profile form and submit, **then** their data is saved and reflected immediately in their portfolio editor.
 
-**AC-02 — AI Summary**  
-When a user clicks "Generate Summary" and has at least one skill and one work experience entered, the AI returns a draft bio within 10 seconds. The user sees it before anything is published.
+### AC-02: AI Summary Generation
+- **Given** a user has entered at least their skills and one work experience, **when** they trigger "Generate Summary," **then** the AI produces a professional bio within 10 seconds and displays it for review before publishing.
 
-**AC-03 — Audience Tailoring**  
-When a user selects "Recruiter" as the audience, the portfolio page reorders and rephrases content to focus on measurable outcomes and job-relevant experience.
+### AC-03: Audience Tailoring
+- **Given** a user selects "Recruiter" as the target audience, **when** the portfolio is rendered, **then** skills and experience are reordered and framed to emphasize measurable outcomes and role fit.
 
-**AC-04 — Human Review**  
-No AI-generated content goes live without the user reviewing and approving it first. Users can edit or regenerate any section.
+### AC-04: Human Review of AI Content
+- **Given** the AI generates a section summary, **when** the user views the draft, **then** they can edit, regenerate, or approve the content before it goes live on the public page.
 
-**AC-05 — Public Page**  
-When a portfolio is published, anyone with the link can open it without logging in. The page loads within 2 seconds.
+### AC-05: Public Portfolio Page
+- **Given** a user has published their portfolio, **when** any visitor accesses their unique URL, **then** the portfolio loads within 2 seconds and displays correctly without requiring login.
 
-**AC-06 — PDF Export**  
-When the user clicks export, a formatted resume PDF downloads within 15 seconds.
+### AC-06: PDF Export
+- **Given** a user clicks "Export as PDF," **when** the export is complete, **then** a formatted, single-page resume PDF is downloaded within 15 seconds.
 
-**AC-07 — Analytics**  
-Portfolio owners can see a view count and link click count on their dashboard after the page has been live for at least 24 hours.
+### AC-07: Analytics
+- **Given** a portfolio has been published for at least 24 hours, **when** the owner views their dashboard, **then** they see a count of total views and link clicks since publication.
 
 ---
 
-*All features and agent behavior in this project should align with what's written here.*
+*This document is the authoritative source of project requirements. All agent behavior and system architecture must align with the above.*
