@@ -39,6 +39,9 @@ groupecaproject/
 |------|------|
 | Kuraedev | Project Lead |
 | JakeCardenas | Developer |
+| RhysSuyu | Developer |
+| ceto-31 | Developer |
+| EunicaNicole | Developer |
 
 ---
 
