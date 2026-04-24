@@ -42,6 +42,7 @@ groupecaproject/
 | RhysSuyu | Developer |
 | ceto-31 | Developer |
 | EunicaNicole | Developer |
+| Michaeljosh39 | Developer |
 
 ---
 
