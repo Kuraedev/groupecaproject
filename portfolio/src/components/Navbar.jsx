@@ -1,73 +1,67 @@
 import { useState, useEffect } from 'react'
 
-function Navbar() {
+const links = ['Skills', 'Experience', 'Projects', 'Contact']
+
+export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 50)
-    window.addEventListener('scroll', onScroll)
-    return () => window.removeEventListener('scroll', onScroll)
+    const fn = () => setScrolled(window.scrollY > 50)
+    window.addEventListener('scroll', fn)
+    return () => window.removeEventListener('scroll', fn)
   }, [])
-
-  const links = ['Home', 'Skills', 'Experience', 'Projects', 'Contact']
 
   return (
     <nav style={{
-      position: 'fixed',
-      top: 0,
-      left: 0,
-      right: 0,
-      zIndex: 1000,
-      padding: '0 60px',
-      height: '70px',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'space-between',
-      backgroundColor: scrolled ? 'rgba(8,8,16,0.85)' : 'transparent',
-      backdropFilter: scrolled ? 'blur(20px)' : 'none',
-      borderBottom: scrolled ? '1px solid rgba(168,85,247,0.1)' : '1px solid transparent',
-      transition: 'all 0.4s ease',
+      position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100,
+      height: '62px',
+      display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+      padding: '0 56px',
+      backgroundColor: scrolled ? 'rgba(6,8,14,0.82)' : 'transparent',
+      backdropFilter: scrolled ? 'blur(20px) saturate(180%)' : 'none',
+      borderBottom: `1px solid ${scrolled ? 'rgba(79,143,255,0.08)' : 'transparent'}`,
+      transition: 'all 0.4s cubic-bezier(0.4,0,0.2,1)',
     }}>
-      <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+
+      {/* Logo */}
+      <a href="#" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none' }}>
         <div style={{
-          width: '32px', height: '32px',
-          background: 'linear-gradient(135deg, #a855f7, #7c3aed)',
-          borderRadius: '8px',
+          width: '32px', height: '32px', borderRadius: '8px',
+          background: 'linear-gradient(135deg, #4f8fff22, #4f8fff44)',
+          border: '1px solid rgba(79,143,255,0.3)',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
-          fontSize: '14px', fontWeight: '800', color: 'white'
+          fontFamily: 'var(--font-mono)', fontSize: '0.6rem',
+          fontWeight: '500', color: 'var(--blue)', letterSpacing: '0.05em',
         }}>G2</div>
-        <span style={{ fontWeight: '700', fontSize: '1rem', color: '#f0f0ff', letterSpacing: '-0.3px' }}>
-          Group 2 <span style={{ color: '#a855f7' }}>Portfolio</span>
-        </span>
-      </div>
-      <ul style={{ display: 'flex', gap: '8px', listStyle: 'none' }}>
+        <span style={{
+          fontFamily: 'var(--font-display)', fontSize: '0.95rem',
+          fontWeight: '700', color: 'var(--text)', letterSpacing: '-0.01em',
+        }}>Portfolio</span>
+      </a>
+
+      {/* Nav links */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: '2px' }}>
         {links.map(link => (
-          <li key={link}>
-            <a href={`#${link.toLowerCase()}`} style={{
-              color: '#9090b0',
-              textDecoration: 'none',
-              fontSize: '0.875rem',
-              fontWeight: '500',
-              padding: '8px 16px',
-              borderRadius: '8px',
-              transition: 'all 0.2s ease',
-              display: 'block',
-            }}
-            onMouseEnter={e => {
-              e.target.style.color = '#f0f0ff'
-              e.target.style.backgroundColor = 'rgba(168,85,247,0.1)'
-            }}
-            onMouseLeave={e => {
-              e.target.style.color = '#9090b0'
-              e.target.style.backgroundColor = 'transparent'
-            }}>
-              {link}
-            </a>
-          </li>
+          <a key={link} href={`#${link.toLowerCase()}`} style={{
+            fontFamily: 'var(--font-body)',
+            fontSize: '0.82rem', fontWeight: '400',
+            color: 'var(--text-2)',
+            textDecoration: 'none', padding: '7px 16px', borderRadius: '8px',
+            letterSpacing: '0.02em',
+            transition: 'color 0.22s ease, background 0.22s ease',
+          }}
+          onMouseEnter={e => {
+            e.target.style.color = 'var(--text)'
+            e.target.style.background = 'rgba(79,143,255,0.07)'
+          }}
+          onMouseLeave={e => {
+            e.target.style.color = 'var(--text-2)'
+            e.target.style.background = 'transparent'
+          }}>
+            {link}
+          </a>
         ))}
-      </ul>
+      </div>
     </nav>
   )
 }
-
-export default Navbar

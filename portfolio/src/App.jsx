@@ -11,9 +11,13 @@ function App() {
     <div>
       <Navbar />
       <Hero />
+      <div className="divider" />
       <Skills />
+      <div className="divider" />
       <Experience />
+      <div className="divider" />
       <Projects />
+      <div className="divider" />
       <Contact />
     </div>
   )
