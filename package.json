@@ -8,7 +8,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "build:portfolio": "npm --prefix portfolio run build && node scripts/sync-portfolio.mjs",
+    "setup:all": "npm install && npm --prefix portfolio install && npm run build:portfolio"
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.1.0",
