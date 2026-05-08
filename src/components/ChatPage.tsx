@@ -1,23 +1,42 @@
 'use client';
 
 import Link from 'next/link';
-import { FormEvent, useState } from 'react';
+import { FormEvent, useEffect, useState } from 'react';
 
 type Message = {
   role: 'user' | 'assistant';
   content: string;
 };
 
-const starterPrompts = [
-  'Tell me about your technical background.',
-  'What projects have you built recently?',
-  'How would you approach a full-stack web app?',
-];
+type Question = {
+  id: number;
+  question: string;
+};
 
 export default function ChatPage() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [questions, setQuestions] = useState<Question[]>([]);
+  const [loadingQuestions, setLoadingQuestions] = useState(true);
+
+  // Fetch questions from database on component mount
+  useEffect(() => {
+    async function loadQuestions() {
+      try {
+        const res = await fetch('/api/questions');
+        if (res.ok) {
+          const data = (await res.json()) as { questions: Question[] };
+          setQuestions(data.questions);
+        }
+      } catch (error) {
+        console.error('Error loading questions:', error);
+      } finally {
+        setLoadingQuestions(false);
+      }
+    }
+    loadQuestions();
+  }, []);
 
   async function sendMessage(e: FormEvent) {
     e.preventDefault();
@@ -36,7 +55,37 @@ export default function ChatPage() {
       const res = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ messages: nextMessages }),
+        body: JSON.stringify({ messages: nextMessages, userQuestion: text }),
+      });
+
+      if (!res.ok) {
+        throw new Error('Unable to get response.');
+      }
+
+      const data = (await res.json()) as { reply?: string };
+      const reply = data.reply?.trim() || 'I could not generate a response.';
+      setMessages((prev) => [...prev, { role: 'assistant', content: reply }]);
+    } catch (error) {
+      const message = error instanceof Error ? error.message : 'Unexpected error occurred.';
+      setMessages((prev) => [...prev, { role: 'assistant', content: `Error: ${message}` }]);
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
+  // Handle clicking a question to send it
+  async function handleQuestionClick(question: string) {
+    setInput(question);
+    // Trigger sending after the state updates
+    const nextMessages = [...messages, { role: 'user' as const, content: question }];
+    setMessages(nextMessages);
+    setIsLoading(true);
+
+    try {
+      const res = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ messages: nextMessages, userQuestion: question }),
       });
 
       if (!res.ok) {
@@ -71,11 +120,22 @@ export default function ChatPage() {
           <div className="empty-state">
             <p>Ask anything about our skills, projects, and experience.</p>
             <div className="starter-grid">
-              {starterPrompts.map((prompt) => (
-                <button key={prompt} type="button" onClick={() => setInput(prompt)}>
-                  {prompt}
-                </button>
-              ))}
+              {loadingQuestions ? (
+                <p>Loading questions...</p>
+              ) : questions.length > 0 ? (
+                questions.map((q) => (
+                  <button 
+                    key={q.id} 
+                    type="button" 
+                    onClick={() => handleQuestionClick(q.question)}
+                    className="question-btn"
+                  >
+                    {q.question}
+                  </button>
+                ))
+              ) : (
+                <p>No questions available</p>
+              )}
             </div>
           </div>
         ) : (

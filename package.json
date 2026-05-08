@@ -10,12 +10,14 @@
     "lint": "next lint",
     "type-check": "tsc --noEmit",
     "build:portfolio": "npm --prefix portfolio run build && node scripts/sync-portfolio.mjs",
-    "setup:all": "npm install && npm --prefix portfolio install && npm run build:portfolio"
+    "setup:all": "npm install && npm --prefix portfolio install && npm run build:portfolio",
+    "db:init": "node scripts/init-db.mjs"
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.1.0",
     "autoprefixer": "^10.4.19",
     "next": "^14.2.3",
+    "pg": "^8.20.0",
     "postcss": "^8.4.38",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
