@@ -21,10 +21,10 @@ CREATE INDEX IF NOT EXISTS idx_question ON questions_answers(question);
 -- Insert sample Q&A data
 INSERT INTO questions_answers (question, answer, category) VALUES
   (
-    'Who are the members of Group 3?',
-    '# Group 3 Members
+    'Who are the members of Group 2?',
+    '# Group 2 Members
 
-Group 3 is composed of 11 talented IT students:
+Group 2 is a team of Information Technology students from St. Paul University who are currently studying and building software projects together:
 
 - **Engiemar Balanay** (engiebalanay@gmail.com) – Front-end and back-end development specialist
 - **King Yohann Ilahn A. Tomas** (yohanntomas2@gmail.com) – Laravel and JavaScript expert
@@ -41,7 +41,7 @@ Group 3 is composed of 11 talented IT students:
   ),
   (
     'What are your skills?',
-    '# Group 3 Technical Skills
+    '# Group 2 Technical Skills
 
 ## Web Development
 - **Frontend:** React, Next.js, Vue.js, Tailwind CSS, HTML/CSS
@@ -68,10 +68,10 @@ Group 3 is composed of 11 talented IT students:
   ),
   (
     'What projects have you built recently?',
-    '# Group 3 Recent Projects
+    '# Group 2 Recent Projects
 
 ## Digital Twin Project
-A comprehensive AI-powered digital twin representing Group 3\'s collective expertise. Built with:
+A comprehensive AI-powered digital twin representing Group 2\'s collective expertise. Built with:
 - **Frontend:** Next.js 14, React, TypeScript, Tailwind CSS
 - **Backend:** Node.js, Next.js API routes
 - **Database:** Neon (PostgreSQL)
@@ -135,7 +135,7 @@ A modern, interactive portfolio showcasing team member profiles and projects:
   ),
   (
     'How can I contact the group?',
-    '# Contact Group 3
+    '# Contact Group 2
 
 You can reach out to any team member directly via email:
 

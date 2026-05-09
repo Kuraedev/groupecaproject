@@ -164,7 +164,85 @@ a {
   white-space: nowrap;
   border: 0;
 }
+/* Typing Indicator Animation */
+.typing-indicator {
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+  height: 1.5rem;
+}
 
+.typing-indicator span {
+  width: 0.6rem;
+  height: 0.6rem;
+  background: #0284c7;
+  border-radius: 50%;
+  animation: typing 1.4s infinite;
+}
+
+.typing-indicator span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typing-indicator span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes typing {
+  0%, 60%, 100% {
+    opacity: 0.3;
+    transform: translateY(0);
+  }
+  30% {
+    opacity: 1;
+    transform: translateY(-0.8rem);
+  }
+}
+
+/* Recent Questions Section */
+.recent-questions {
+  margin-bottom: 1.5rem;
+  padding: 0.75rem;
+  border-top: 1px dashed #cbd5e1;
+}
+
+.recent-label {
+  margin: 0 0 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #64748b;
+  text-transform: uppercase;
+}
+
+.recent-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.recent-btn {
+  padding: 0.5rem 1rem;
+  background: #f0f9ff;
+  border: 1px solid #bfdbfe;
+  border-radius: 0.5rem;
+  color: #0284c7;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.recent-btn:hover:not(:disabled) {
+  background: #0284c7;
+  color: white;
+  transform: translateY(-2px);
+}
+
+.recent-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
 .portfolio-page {
   min-height: 100vh;
   display: grid;

@@ -19,6 +19,7 @@ export default function ChatPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [questions, setQuestions] = useState<Question[]>([]);
   const [loadingQuestions, setLoadingQuestions] = useState(true);
+  const [recentQuestions, setRecentQuestions] = useState<string[]>([]);
 
   // Fetch questions from database on component mount
   useEffect(() => {
@@ -75,8 +76,13 @@ export default function ChatPage() {
 
   // Handle clicking a question to send it
   async function handleQuestionClick(question: string) {
+    // Add to recent questions (keep last 5)
+    setRecentQuestions((prev) => {
+      const updated = [question, ...prev.filter((q) => q !== question)];
+      return updated.slice(0, 5);
+    });
+
     setInput(question);
-    // Trigger sending after the state updates
     const nextMessages = [...messages, { role: 'user' as const, content: question }];
     setMessages(nextMessages);
     setIsLoading(true);
@@ -140,13 +146,43 @@ export default function ChatPage() {
           </div>
         ) : (
           <div className="messages">
+            {/* Show recent questions at the top */}
+            {recentQuestions.length > 0 && (
+              <div className="recent-questions">
+                <p className="recent-label">Quick follow-up:</p>
+                <div className="recent-grid">
+                  {recentQuestions.map((q, idx) => (
+                    <button
+                      key={idx}
+                      type="button"
+                      onClick={() => handleQuestionClick(q)}
+                      className="recent-btn"
+                      disabled={isLoading}
+                    >
+                      {q}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+            
             {messages.map((message, idx) => (
               <article key={`${message.role}-${idx}`} className={`msg msg-${message.role}`}>
-                <p className="msg-role">{message.role === 'user' ? 'You' : 'Digital Twin'}</p>
+                <p className="msg-role">{message.role === 'user' ? 'YOU' : 'DIGITAL TWIN'}</p>
                 <p>{message.content}</p>
               </article>
             ))}
-            {isLoading ? <p className="typing">Digital twin is thinking...</p> : null}
+            
+            {isLoading && (
+              <article className="msg msg-assistant">
+                <p className="msg-role">DIGITAL TWIN</p>
+                <div className="typing-indicator">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+              </article>
+            )}
           </div>
         )}
       </section>

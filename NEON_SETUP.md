@@ -47,7 +47,7 @@ You should see output like:
 ✅ Tables created successfully
 
 📝 Inserting sample Q&A data...
-  ✓ Added: "Who are the members of Group 3?"
+  ✓ Added: "Who are the members of Group 2?"
   ✓ Added: "What are your skills?"
   ✓ Added: "What projects have you built recently?"
   ✓ Added: "How do I become a full-stack developer?"

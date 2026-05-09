@@ -1,9 +1,9 @@
 # AI Agent Configuration & System Architecture
-## Digital Twin – Reggie Lovett
+## Digital Twin – Karl Castillo
 
 **Version:** 1.0  
 **Date:** April 2026  
-**Owner:** Reggie Lovett
+**Owner:** Karl Castillo
 
 ---
 
@@ -170,7 +170,7 @@ The following rules are **enforced in system instructions** and validated in cod
 - **Implementation:** Explicit instruction to offer alternative when unable to answer
 - **Validation:** Monitoring for instances where system refuses inappropriate requests
 - **Examples:**
-  - "I can help with technical questions, but career advice beyond my documented experience should come from Reggie directly"
+  - "I can help with technical questions, but career advice beyond my documented experience should come from Karl directly"
   - "That's outside my scope as a digital twin simulation"
 
 ### 3.2 Response Quality Rules
