@@ -263,7 +263,7 @@ cd Digital-twin2
 npm install
 npm run dev
 # Visit http://localhost:3000 locally
-# Or view deployed: https://groupecaproject.vercel.app/
+# Or view deployed: https://grouptwodigitaltwin.vercel.app/
 ```
 
 ### Building for Production
@@ -342,3 +342,4 @@ npm run lint
 
 **Version:** 2.0 (Next.js)  
 **Date:** April 2026
+

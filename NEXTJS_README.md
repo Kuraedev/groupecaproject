@@ -90,7 +90,7 @@ Configuration Files:
 ## 🚀 Deployed Version
 
 The application is deployed on Vercel:  
-**Live URL:** https://groupecaproject.vercel.app/
+**Live URL:** https://grouptwodigitaltwin.vercel.app/
 
 ## 💬 How It Works
 
@@ -312,3 +312,4 @@ This project is part of the Digital Twin series. See LICENSE file for details.
 
 **Last Updated:** April 2026  
 **Version:** 2.0 (Next.js)
+

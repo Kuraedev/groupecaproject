@@ -2,7 +2,7 @@
   "name": "digital-twin-nextjs",
   "version": "1.0.0",
   "description": "AI-powered digital twin chat interface",
-  "homepage": "https://groupecaproject.vercel.app/",
+  "homepage": "https://grouptwodigitaltwin.vercel.app/",
   "repository": "https://github.com/Kuraedev/groupecaproject",
   "private": true,
   "scripts": {
@@ -34,3 +34,4 @@
     "eslint-config-next": "^14.2.3"
   }
 }
+

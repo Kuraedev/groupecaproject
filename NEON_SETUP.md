@@ -64,7 +64,7 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) locally and you'll see questions from the database!
 
-**Deployed version:** https://groupecaproject.vercel.app/
+**Deployed version:** https://grouptwodigitaltwin.vercel.app/
 
 ---
 
@@ -196,3 +196,4 @@ DELETE FROM questions_answers WHERE id = 1;
 - Neon Docs: https://neon.tech/docs
 - PostgreSQL Docs: https://www.postgresql.org/docs/
 - Next.js Docs: https://nextjs.org/docs
+

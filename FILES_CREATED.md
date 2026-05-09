@@ -197,7 +197,7 @@ Before running the project:
 - [ ] API keys added to `.env.local`
 - [ ] Development server starts: `npm run dev`
 - [ ] Application loads at http://localhost:3000
-- [ ] Deployed to Vercel at https://groupecaproject.vercel.app/
+- [ ] Deployed to Vercel at https://grouptwodigitaltwin.vercel.app/
 
 ## Next.js App Router Features Included
 
@@ -218,3 +218,4 @@ Before running the project:
 **Status:** ✅ Ready to Deploy  
 
 For more details, see **SETUP_COMPLETE.md** or **NEXTJS_README.md**
+
