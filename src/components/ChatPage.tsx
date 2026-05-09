@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { FormEvent, useEffect, useState } from 'react';
+import { FormEvent, useEffect, useState, useRef } from 'react';
 
 type Message = {
   role: 'user' | 'assistant';
@@ -20,6 +20,12 @@ export default function ChatPage() {
   const [questions, setQuestions] = useState<Question[]>([]);
   const [loadingQuestions, setLoadingQuestions] = useState(true);
   const [recentQuestions, setRecentQuestions] = useState<string[]>([]);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  // Auto-scroll to bottom when messages change
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [messages, isLoading]);
 
   // Fetch questions from database on component mount
   useEffect(() => {
@@ -114,7 +120,7 @@ export default function ChatPage() {
       <header className="topbar">
         <div>
           <p className="eyebrow">Digital Twin</p>
-          <h1>Group 2 Assistant</h1>
+          <h1>Group 2</h1>
         </div>
         <Link className="portfolio-link" href="/portfolio">
           Open Portfolio
@@ -127,7 +133,7 @@ export default function ChatPage() {
             <p>Ask anything about our skills, projects, and experience.</p>
             <div className="starter-grid">
               {loadingQuestions ? (
-                <p>Loading questions...</p>
+                <p style={{ textAlign: 'center', color: '#64748b' }}>Loading questions...</p>
               ) : questions.length > 0 ? (
                 questions.map((q) => (
                   <button 
@@ -140,7 +146,7 @@ export default function ChatPage() {
                   </button>
                 ))
               ) : (
-                <p>No questions available</p>
+                <p style={{ textAlign: 'center', color: '#64748b' }}>No questions available</p>
               )}
             </div>
           </div>
@@ -168,14 +174,14 @@ export default function ChatPage() {
             
             {messages.map((message, idx) => (
               <article key={`${message.role}-${idx}`} className={`msg msg-${message.role}`}>
-                <p className="msg-role">{message.role === 'user' ? 'YOU' : 'DIGITAL TWIN'}</p>
-                <p>{message.content}</p>
+                <p className="msg-role">{message.role === 'user' ? 'YOU' : 'GROUP 2'}</p>
+                <p style={{ margin: '0.5rem 0 0', lineHeight: '1.6' }}>{message.content}</p>
               </article>
             ))}
             
             {isLoading && (
               <article className="msg msg-assistant">
-                <p className="msg-role">DIGITAL TWIN</p>
+                <p className="msg-role">GROUP 2</p>
                 <div className="typing-indicator">
                   <span></span>
                   <span></span>
@@ -183,6 +189,7 @@ export default function ChatPage() {
                 </div>
               </article>
             )}
+            <div ref={messagesEndRef} />
           </div>
         )}
       </section>
@@ -195,11 +202,17 @@ export default function ChatPage() {
           id="message"
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          rows={3}
+          rows={1}
           placeholder="Type your question..."
+          onKeyPress={(e) => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+              e.preventDefault();
+              sendMessage(e as any);
+            }
+          }}
         />
-        <button type="submit" disabled={isLoading || !input.trim()}>
-          Send
+        <button type="submit" disabled={isLoading || !input.trim()} title="Send message">
+          ↑
         </button>
       </form>
     </main>
