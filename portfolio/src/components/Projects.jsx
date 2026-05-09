@@ -5,7 +5,7 @@ const projects = [
     desc: 'An AI-powered platform that creates a dynamic digital twin of a person, showcasing their skills and achievements with audience-tailored content.',
     tech: ['React', 'Node.js', 'Claude AI'],
     status: 'Live',
-    link: 'https://github.com/Kuraedev/groupecaproject',
+    link: 'https://groupecaproject.vercel.app/',
   },
   {
     num: '002',

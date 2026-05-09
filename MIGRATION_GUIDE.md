@@ -262,7 +262,8 @@ POST /api/leads
 cd Digital-twin2
 npm install
 npm run dev
-# Visit http://localhost:3000
+# Visit http://localhost:3000 locally
+# Or view deployed: https://groupecaproject.vercel.app/
 ```
 
 ### Building for Production

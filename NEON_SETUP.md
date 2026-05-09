@@ -62,7 +62,9 @@ You should see output like:
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) and you'll see questions from the database!
+Open [http://localhost:3000](http://localhost:3000) locally and you'll see questions from the database!
+
+**Deployed version:** https://groupecaproject.vercel.app/
 
 ---
 

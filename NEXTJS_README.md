@@ -87,6 +87,11 @@ Configuration Files:
    
    Open [http://localhost:3000](http://localhost:3000) in your browser
 
+## 🚀 Deployed Version
+
+The application is deployed on Vercel:  
+**Live URL:** https://groupecaproject.vercel.app/
+
 ## 💬 How It Works
 
 ### Chat Flow
