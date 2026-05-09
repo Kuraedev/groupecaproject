@@ -106,22 +106,24 @@ a {
 
 .starter-grid button,
 .question-btn {
-  border: 1px solid rgba(168, 85, 247, 0.3);
-  background: linear-gradient(135deg, rgba(168, 85, 247, 0.1) 0%, rgba(236, 72, 153, 0.1) 100%);
+  border: 1.5px solid rgba(168, 85, 247, 0.3);
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.15) 0%, rgba(236, 72, 153, 0.1) 100%);
   border-radius: 0.75rem;
   padding: 1rem;
   text-align: left;
   cursor: pointer;
-  color: #e2e8f0;
+  color: #e0d5ff;
   font-weight: 500;
   transition: all 0.3s ease;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .starter-grid button:hover,
 .question-btn:hover {
   border-color: rgba(168, 85, 247, 0.6);
-  background: linear-gradient(135deg, rgba(168, 85, 247, 0.2) 0%, rgba(236, 72, 153, 0.2) 100%);
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.25) 0%, rgba(236, 72, 153, 0.2) 100%);
   transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(168, 85, 247, 0.25);
 }
 
 .messages {
@@ -132,33 +134,59 @@ a {
 .msg {
   border-radius: 1rem;
   padding: 1rem;
-  animation: slideIn 0.3s ease;
+  animation: slideIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  backdrop-filter: blur(5px);
 }
 
 @keyframes slideIn {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(15px) scale(0.95);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
 }
 
 .msg-user {
   background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
-  color: #fff;
+  color: #ffffff;
   margin-left: auto;
   max-width: 85%;
   border-bottom-right-radius: 0.25rem;
+  box-shadow: 0 4px 12px rgba(168, 85, 247, 0.3);
+  transition: all 0.3s ease;
+}
+
+.msg-user:hover {
+  box-shadow: 0 8px 20px rgba(168, 85, 247, 0.5);
+  transform: translateY(-2px);
+}
+
+.msg-user p {
+  color: #ffffff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 .msg-assistant {
-  background: linear-gradient(135deg, rgba(168, 85, 247, 0.2) 0%, rgba(236, 72, 153, 0.1) 100%);
-  border: 1px solid rgba(168, 85, 247, 0.3);
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.25) 0%, rgba(236, 72, 153, 0.15) 100%);
+  border: 2px solid rgba(168, 85, 247, 0.4);
   max-width: 85%;
   border-bottom-left-radius: 0.25rem;
+  box-shadow: 0 4px 12px rgba(168, 85, 247, 0.2);
+  transition: all 0.3s ease;
+}
+
+.msg-assistant:hover {
+  border-color: rgba(168, 85, 247, 0.6);
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.35) 0%, rgba(236, 72, 153, 0.25) 100%);
+  box-shadow: 0 8px 20px rgba(168, 85, 247, 0.3);
+}
+
+.msg-assistant p {
+  color: #f1f5f9;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .msg-role {
@@ -166,12 +194,18 @@ a {
   font-size: 0.75rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: #a78bfa;
+  letter-spacing: 0.1em;
+  color: #e0d5ff;
+  opacity: 0.9;
+  transition: opacity 0.3s ease;
 }
 
 .msg-assistant .msg-role {
-  color: #c084fc;
+  color: #e0d5ff;
+}
+
+.msg:hover .msg-role {
+  opacity: 1;
 }
 
 .composer {
@@ -216,11 +250,22 @@ a {
   cursor: pointer;
   font-size: 0.9rem;
   transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(168, 85, 247, 0.2);
 }
 
 .composer button:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 16px rgba(168, 85, 247, 0.4);
+  transform: scale(1.05) translateY(-1px);
+  box-shadow: 0 8px 20px rgba(168, 85, 247, 0.4);
+}
+
+.composer button:active {
+  transform: scale(0.98);
+}
+
+.composer button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
 }
 
 .composer button:disabled {
@@ -342,46 +387,63 @@ a {
   border: 0;
 }
 
-/* Mobile responsive */
-@media (max-width: 768px) {
-  .shell {
-    grid-template-rows: auto 1fr auto;
-  }
-
-  .topbar {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 1rem;
-  }
-
-  .topbar h1 {
-    font-size: 1.25rem;
-  }
-
-  .composer {
-    grid-template-columns: 1fr;
-    margin: 0 1rem 1rem;
-  }
-
-  .msg-user,
-  .msg-assistant {
-    max-width: 100%;
-  }
-
-  .starter-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .chat-panel {
-    padding: 1rem;
-  }
-
-  .portfolio-header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
+/* Recent questions */
+.recent-questions {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.15) 0%, rgba(236, 72, 153, 0.1) 100%);
+  border-radius: 0.75rem;
+  border: 1.5px solid rgba(168, 85, 247, 0.3);
+  transition: all 0.3s ease;
 }
 
+.recent-questions:hover {
+  border-color: rgba(168, 85, 247, 0.5);
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.2) 0%, rgba(236, 72, 153, 0.15) 100%);
+}
+
+.recent-label {
+  color: #e0d5ff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 0 0 0.75rem;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.recent-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 0.5rem;
+}
+
+.recent-btn {
+  border: 1.5px solid rgba(168, 85, 247, 0.4);
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.2) 0%, rgba(236, 72, 153, 0.1) 100%);
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  color: #e0d5ff;
+  font-weight: 500;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.recent-btn:hover,
+.recent-btn:focus {
+  border-color: rgba(236, 72, 153, 0.7);
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.3) 0%, rgba(236, 72, 153, 0.3) 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(168, 85, 247, 0.25);
+}
+
+.recent-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
 @media (max-width: 480px) {
   .topbar {
     padding: 0.75rem;
@@ -459,11 +521,6 @@ a {
   cursor: pointer;
 }
 
-.composer button:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
 .sr-only {
   position: absolute;
   width: 1px;
@@ -501,12 +558,14 @@ a {
 
 @keyframes typing {
   0%, 60%, 100% {
-    opacity: 0.3;
-    transform: translateY(0);
+    opacity: 0.4;
+    transform: translateY(0) scale(0.8);
+    background: #a855f7;
   }
   30% {
     opacity: 1;
-    transform: translateY(-0.8rem);
+    transform: translateY(-0.8rem) scale(1);
+    background: #ec4899;
   }
 }
 
