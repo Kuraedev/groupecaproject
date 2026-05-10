@@ -6,10 +6,11 @@ This is the GitHub-visible version of the Weeks 1-5 evidence. It mirrors the ren
 
 | Metric | Value | Notes |
 |---|---:|---|
-| Total commits | 27 | All commits from repository creation to 2026-05-10 |
+| Total commits | 35 | All commits from repository creation to 2026-05-10 |
 | Week 1 commits | 11 | Setup, initial docs, and foundation work |
 | Week 2 commits | 11 | Design, evidence, and documentation refinement |
-| Week 3 commits | 5 | In progress - MCP implementation and feature development |
+| Week 3 commits | 5 | Evidence updates and Week 3 planning |
+| Week 4 commits | 8 | MCP server implementation, performance improvements, and documentation |
 | Pull requests | 1 | Live PR created for review evidence |
 
 ## Page 1: Network Timeline
@@ -43,6 +44,11 @@ This is the GitHub-visible version of the Weeks 1-5 evidence. It mirrors the ren
 | 2026-05-10 | Rhys Suyu | chore(docs): add Markdown ClickUp board evidence for GitHub visibility | `ab7383c` |
 | 2026-05-10 | Rhys Suyu | docs: add repository structure to README and confirm docs links | `ca1881e` |
 | 2026-05-10 | Rhys Suyu | docs: add design plan and week 2 evidence artifacts | `53f552c` |
+| 2026-05-10 | Rhys Suyu | docs: update evidence to track week 3 progress and remove submission checklist | `6b842ae` |
+| 2026-05-10 | Rhys Suyu | docs: update evidence file formatting | `92202fb` |
+| 2026-05-10 | Rhys Suyu | docs: update clickup board evidence | `6781d1a` |
+| 2026-05-10 | Rhys Suyu | Update week2-github-history-cristian-suyu.md | `19742a8` |
+| 2026-05-10 | Rhys Suyu | feat: add MCP server scaffold with chat, interview, and portfolio tools | `a85d037` |
 
 ## Page 2: Commit List with Authors
 

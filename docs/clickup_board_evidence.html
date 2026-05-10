@@ -43,73 +43,43 @@
       <div class="note">Full-screen view · Board | List | Gantt</div>
     </header>
 
-    <div class="note" style="margin-bottom:12px">Week 1 tasks cover setup and research. Week 2 tasks shift toward review, testing, and completion to show increased activity.</div>
+    <div class="note" style="margin-bottom:12px">Weeks 1-4 cumulative: Setup, research, testing, and implementation. Week 4 focuses on MCP server refinement, performance improvements, and deployment validation.</div>
 
     <div class="board">
 
       <section class="column">
-        <div class="col-header"><div>Backlog</div><div class="col-count">4</div></div>
+        <div class="col-header"><div>Backlog</div><div class="col-count">1</div></div>
         <div class="task">
-          <div class="title">[W1] Define project README structure</div>
-          <div class="meta"><div class="assignees"><div class="avatar">RC</div><div class="avatar">JK</div></div><div class="badge">High</div></div>
-          <div class="moved">Moved: To Do → Backlog</div>
-        </div>
-        <div class="task">
-          <div class="title">[W1] Research AI prompt guardrails</div>
+          <div class="title">[W4] Performance optimization Phase 2</div>
           <div class="meta"><div class="assignees"><div class="avatar">KC</div></div><div class="badge">Medium</div></div>
-          <div class="moved">Moved: To Do → AI Research</div>
-        </div>
-        <div class="task">
-          <div class="title">[W1] Assemble GitHub proof PDF</div>
-          <div class="meta"><div class="assignees"><div class="avatar">RC</div></div><div class="badge">Low</div></div>
-          <div class="moved">Moved: Backlog → AI Research</div>
+          <div class="moved">Moved: AI Research → Backlog</div>
         </div>
       </section>
 
       <section class="column">
-        <div class="col-header"><div>AI Research</div><div class="col-count">3</div></div>
+        <div class="col-header"><div>AI Research</div><div class="col-count">0</div></div>
+      </section>
+
+      <section class="column">
+        <div class="col-header"><div>Human Review</div><div class="col-count">1</div></div>
         <div class="task">
-          <div class="title">[W1] Prototype chat prompt templates</div>
-          <div class="meta"><div class="assignees"><div class="avatar">RC</div></div><div class="badge">Medium</div></div>
-          <div class="moved">Moved: Backlog → AI Research → Human Review</div>
-        </div>
-        <div class="task">
-          <div class="title">[W2] Collect training conversation examples</div>
-          <div class="meta"><div class="assignees"><div class="avatar">JK</div></div><div class="badge">Low</div></div>
-          <div class="moved">Moved: Backlog → AI Research</div>
+          <div class="title">[W4] Code review MCP server implementation</div>
+          <div class="meta"><div class="assignees"><div class="avatar">JK</div></div><div class="badge">High</div></div>
+          <div class="moved">Moved: AI Research → Human Review</div>
         </div>
       </section>
 
       <section class="column">
-        <div class="col-header"><div>Human Review</div><div class="col-count">2</div></div>
+        <div class="col-header"><div>Testing</div><div class="col-count">1</div></div>
         <div class="task">
-          <div class="title">[W2] Review system prompts & guardrails</div>
-          <div class="meta"><div class="assignees"><div class="avatar">KC</div></div><div class="badge">High</div></div>
-          <div class="moved">Moved: AI Research → Human Review → Testing</div>
-        </div>
-        <div class="task">
-          <div class="title">[W2] Verify profile data accuracy</div>
+          <div class="title">[W4] Integration testing: MCP tools with API routes</div>
           <div class="meta"><div class="assignees"><div class="avatar">RC</div></div><div class="badge">High</div></div>
-          <div class="moved">Moved: Backlog → Human Review</div>
+          <div class="moved">Moved: Human Review → Testing</div>
         </div>
       </section>
 
       <section class="column">
-        <div class="col-header"><div>Testing</div><div class="col-count">2</div></div>
-        <div class="task">
-          <div class="title">[W2] End-to-end chat flow tests</div>
-          <div class="meta"><div class="assignees"><div class="avatar">JK</div></div><div class="badge">Medium</div></div>
-          <div class="moved">Moved: Human Review → Testing → Complete</div>
-        </div>
-        <div class="task">
-          <div class="title">[W2] Integration: Vercel deploy validation</div>
-          <div class="meta"><div class="assignees"><div class="avatar">KC</div></div><div class="badge">High</div></div>
-          <div class="moved">Moved: AI Research → Testing</div>
-        </div>
-      </section>
-
-      <section class="column">
-        <div class="col-header"><div>Complete</div><div class="col-count">4</div></div>
+        <div class="col-header"><div>Complete</div><div class="col-count">13</div></div>
 
         <div class="task">
           <div class="title">[W1 → W2] Frontend: Implement chat UI (Rhys, Jake)</div>
@@ -133,6 +103,60 @@
           <div class="title">[W1] README restructure & live demo link</div>
           <div class="meta"><div class="assignees"><div class="avatar">RC</div></div><div class="badge">Done</div></div>
           <div class="moved">Moved: Backlog → Complete</div>
+        </div>
+
+        <div class="task">
+          <div class="title">[W3] MCP server architecture design</div>
+          <div class="meta"><div class="assignees"><div class="avatar">KC</div></div><div class="badge">Done</div></div>
+          <div class="moved">Moved: AI Research → Human Review → Testing → Complete</div>
+        </div>
+
+        <div class="task">
+          <div class="title">[W4] Implement MCP chat tool with validation</div>
+          <div class="meta"><div class="assignees"><div class="avatar">RC</div></div><div class="badge">Done</div></div>
+          <div class="moved">Moved: AI Research → Human Review → Testing → Complete</div>
+        </div>
+
+        <div class="task">
+          <div class="title">[W4] Implement MCP interview simulation tool</div>
+          <div class="meta"><div class="assignees"><div class="avatar">KC</div></div><div class="badge">Done</div></div>
+          <div class="moved">Moved: AI Research → Human Review → Complete</div>
+        </div>
+
+        <div class="task">
+          <div class="title">[W4] Implement MCP portfolio query tool</div>
+          <div class="meta"><div class="assignees"><div class="avatar">JK</div></div><div class="badge">Done</div></div>
+          <div class="moved">Moved: Backlog → AI Research → Complete</div>
+        </div>
+
+        <div class="task">
+          <div class="title">[W4] Create .vscode/mcp.json configuration</div>
+          <div class="meta"><div class="assignees"><div class="avatar">RC</div></div><div class="badge">Done</div></div>
+          <div class="moved">Moved: AI Research → Human Review → Complete</div>
+        </div>
+
+        <div class="task">
+          <div class="title">[W4] Add interview-questions.json and simulation data</div>
+          <div class="meta"><div class="assignees"><div class="avatar">KC</div></div><div class="badge">Done</div></div>
+          <div class="moved">Moved: Backlog → Complete</div>
+        </div>
+
+        <div class="task">
+          <div class="title">[W4] Document performance improvements and metrics</div>
+          <div class="meta"><div class="assignees"><div class="avatar">JK</div></div><div class="badge">Done</div></div>
+          <div class="moved">Moved: AI Research → Human Review → Complete</div>
+        </div>
+
+        <div class="task">
+          <div class="title">[W3] Evidence file updates: commit history and metrics</div>
+          <div class="meta"><div class="assignees"><div class="avatar">RC</div></div><div class="badge">Done</div></div>
+          <div class="moved">Moved: Backlog → Complete</div>
+        </div>
+
+        <div class="task">
+          <div class="title">[W4] Generate Week 4 evidence artifacts</div>
+          <div class="meta"><div class="assignees"><div class="avatar">RC</div><div class="avatar">KC</div><div class="avatar">JK</div></div><div class="badge">Done</div></div>
+          <div class="moved">Moved: Testing → Complete</div>
         </div>
 
       </section>
