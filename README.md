@@ -22,7 +22,7 @@ An AI-powered Digital Twin that represents a professional 24/7. Built with Next.
 - **Frontend:** Next.js 14+
 - **Backend:** Node.js 18+
 - **AI Model:** OpenAI GPT-4 / Claude 3.5
-- **Database:** Supabase (PostgreSQL)
+- **Database:** Neon (PostgreSQL)
 - **Deployment:** Vercel
 
 ## Getting Started
