@@ -35,3 +35,15 @@ See [SETUP_COMPLETE.md](SETUP_COMPLETE.md) for installation and setup instructio
 - [Agents & Architecture](agents.md)
 - [Migration Guide](MIGRATION_GUIDE.md)
 
+## Repository Structure
+
+A high-level view of the repository layout:
+
+- `docs/` — project documentation, including `prd.md` and board evidence
+- `src/` — Next.js app source (app routes, components, API handlers)
+- `public/` — static assets
+- `scripts/` — repository automation scripts (db init, sync)
+- `README.md`, `agents.md`, `MIGRATION_GUIDE.md`, `SETUP_COMPLETE.md`
+
+The `docs/prd.md` and `agents.md` links above are working references to the product requirements and agent configuration.
+
