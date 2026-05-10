@@ -8,8 +8,8 @@ This is the GitHub-visible version of the Week 2 evidence. It mirrors the render
 |---|---:|---|
 | Total commits | 27 | All commits from repository creation to 2026-05-10 |
 | Week 1 commits | 11 | Setup, initial docs, and foundation work |
-| Week 2 commits | 16 | Design, evidence, and documentation refinement |
-| Week 3 commits | 0 | In progress - MCP implementation and feature development |
+| Week 2 commits | 11 | Design, evidence, and documentation refinement |
+| Week 3 commits | 5 | In progress - MCP implementation and feature development |
 | Pull requests | 1 | Live PR created for review evidence |
 
 ## Page 1: Network Timeline
