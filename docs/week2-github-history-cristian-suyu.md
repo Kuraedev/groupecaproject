@@ -1,6 +1,6 @@
-# Week 2 GitHub History Evidence
+# Week 1-5 GitHub History Evidence
 
-This is the GitHub-visible version of the Week 2 evidence. It mirrors the rendered report and keeps the commit history and pull request evidence readable directly in the repository.
+This is the GitHub-visible version of the Weeks 1-5 evidence. It mirrors the rendered report and keeps the commit history and pull request evidence readable directly in the repository.
 
 ## Summary
 
