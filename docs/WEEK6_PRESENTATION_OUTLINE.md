@@ -18,13 +18,15 @@
 
 ## 2. Group 2 Member Lineup (Speaker Order)
 1. Karl Andrei Castillo
-2. Pearlshaline Gumiran
-3. Aniceto Obina Jr
-4. Eunika Nicole Lasam
-5. Jake Cardenas
-6. Kurt Jakes Andrei Butay
-7. Rexie Margarette Vargas
-8. Rhys Cristian Suyu
+2. Rhys Cristian T. Suyu
+3. Pearlshaline Gumiran
+4. Jake Cardenas
+5. Rexie Margarette Vargas 
+6. Eunika Nicole Lasam
+7. Kurt Jakes Andrei Butay 
+8. Aniceto Obina Jr
+9. Jake Cardenas
+10. Rhys Cristian T. Suyu
 
 ---
 
@@ -50,7 +52,9 @@
 
 "The MCP layer is important because it gives us input validation, structured handling, and more consistent outputs."
 
-"This architecture helps reduce malformed requests and keeps responses reliable."
+"For data persistence, we use Neon database—a PostgreSQL backend that stores Reggie's profile information, including skills, projects, experiences, and conversation history. When users ask the chatbot questions, the system queries this Neon database to retrieve accurate, documented information, ensuring all responses are grounded in real profile data rather than hallucinations."
+
+"This architecture helps reduce malformed requests, keeps responses reliable, and ensures the digital twin has contextual knowledge to answer profile-specific questions accurately."
 
 ### 3:00-4:00 | Speaker 4: Jake Cardenas (Feature Walkthrough)
 **Say this:**
@@ -63,6 +67,8 @@
 ### 4:00-5:00 | Speaker 5: Rexie Margarette Vargas and Eunika Nicole Lasam (Implementation Highlights)
 **Say this:**
 "At this stage, our core implementation is complete: chat flow, interview simulation, and portfolio sections are connected and working together."
+
+"Here's how the system integrates: OpenAI API keys are securely configured in our environment variables, allowing us to call GPT-4 for generating responses and summaries. The Neon PostgreSQL database stores all profile information, which the API routes query before sending context to the AI model. We then deploy the entire application on Vercel, which hosts the Next.js frontend and serverless API routes. These three components work together seamlessly: Vercel serves the app, calls to the OpenAI API are authenticated with secure keys, and the MCP server retrieves contextual data from Neon before composing requests."
 
 "Our architecture supports clean request handling and organized outputs, which helps us present a reliable user experience."
 
