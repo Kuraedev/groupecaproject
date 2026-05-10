@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ClickUp Board Evidence — Mock</title>
+  <style>
+    :root{--bg:#0b0f14;--card:#0f1720;--muted:#9aa4b2;--accent:#7c5cff}
+    html,body{height:100%;margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,'Helvetica Neue',Arial;}
+    body{background:linear-gradient(180deg,#061018 0%, #071421 100%);color:#e6eef6}
+    .urlbar{height:48px;background:#ffffff10;border-bottom:1px solid #ffffff10;display:flex;align-items:center;padding:0 14px;gap:12px}
+    .favicon{width:20px;height:20px;border-radius:4px;background:linear-gradient(45deg,var(--accent),#2dd4bf)}
+    .url{flex:1;background:#ffffff10;padding:8px 12px;border-radius:8px;color:#e6eef6;font-size:13px}
+    .timestamp{font-size:12px;color:var(--muted)}
+    .container{padding:18px;height:calc(100% - 48px);box-sizing:border-box}
+    .board{display:flex;gap:14px;height:100%;align-items:flex-start}
+    .column{background:rgba(255,255,255,0.03);border-radius:8px;padding:12px;width:320px;box-sizing:border-box;display:flex;flex-direction:column;max-height:100%;}
+    .col-header{font-weight:600;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center}
+    .col-count{background:#ffffff10;padding:4px 8px;border-radius:999px;font-size:12px;color:var(--muted)}
+    .task{background:linear-gradient(180deg,#0b1220,#08101a);padding:10px;border-radius:10px;margin-bottom:10px;border:1px solid #ffffff06}
+    .task .title{font-weight:600}
+    .task .meta{font-size:12px;color:var(--muted);margin-top:6px;display:flex;justify-content:space-between;align-items:center}
+    .assignees{display:flex;gap:6px}
+    .avatar{width:28px;height:28px;border-radius:50%;background:#2b3a4a;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;border:2px solid #0b0f14}
+    .badge{background:#ffffff06;padding:4px 8px;border-radius:999px;font-size:11px;color:var(--muted)}
+    .moved{font-size:11px;color:#a7b3c0;margin-top:6px}
+    header.page-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+    header.page-title h1{font-size:18px;margin:0}
+    .note{font-size:13px;color:var(--muted)}
+    /* responsive */
+    @media (max-width:1000px){.board{flex-wrap:wrap}}
+  </style>
+</head>
+<body>
+  <div class="urlbar">
+    <div class="favicon" aria-hidden></div>
+    <div class="url">https://app.clickup.com/123456/board/abcdef — digital-twin-team-1</div>
+    <div class="timestamp" id="timestamp">Loading timestamp...</div>
+  </div>
+  <div class="container">
+    <header class="page-title">
+      <h1>Team 1 — ClickUp Board (Mock)</h1>
+      <div class="note">Full-screen view · Board | List | Gantt</div>
+    </header>
+
+    <div class="board">
+
+      <section class="column">
+        <div class="col-header"><div>Backlog</div><div class="col-count">4</div></div>
+        <div class="task">
+          <div class="title">Define project README structure</div>
+          <div class="meta"><div class="assignees"><div class="avatar">RC</div><div class="avatar">JK</div></div><div class="badge">High</div></div>
+          <div class="moved">Moved: To Do → Backlog</div>
+        </div>
+        <div class="task">
+          <div class="title">Research AI prompt guardrails</div>
+          <div class="meta"><div class="assignees"><div class="avatar">KC</div></div><div class="badge">Medium</div></div>
+          <div class="moved">Moved: To Do → AI Research</div>
+        </div>
+        <div class="task">
+          <div class="title">Assemble GitHub proof PDF</div>
+          <div class="meta"><div class="assignees"><div class="avatar">RC</div></div><div class="badge">Low</div></div>
+          <div class="moved">Moved: Backlog → AI Research</div>
+        </div>
+      </section>
+
+      <section class="column">
+        <div class="col-header"><div>AI Research</div><div class="col-count">3</div></div>
+        <div class="task">
+          <div class="title">Prototype chat prompt templates</div>
+          <div class="meta"><div class="assignees"><div class="avatar">RC</div></div><div class="badge">Medium</div></div>
+          <div class="moved">Moved: Backlog → AI Research → Human Review</div>
+        </div>
+        <div class="task">
+          <div class="title">Collect training conversation examples</div>
+          <div class="meta"><div class="assignees"><div class="avatar">JK</div></div><div class="badge">Low</div></div>
+          <div class="moved">Moved: Backlog → AI Research</div>
+        </div>
+      </section>
+
+      <section class="column">
+        <div class="col-header"><div>Human Review</div><div class="col-count">2</div></div>
+        <div class="task">
+          <div class="title">Review system prompts & guardrails</div>
+          <div class="meta"><div class="assignees"><div class="avatar">KC</div></div><div class="badge">High</div></div>
+          <div class="moved">Moved: AI Research → Human Review → Testing</div>
+        </div>
+        <div class="task">
+          <div class="title">Verify profile data accuracy</div>
+          <div class="meta"><div class="assignees"><div class="avatar">RC</div></div><div class="badge">High</div></div>
+          <div class="moved">Moved: Backlog → Human Review</div>
+        </div>
+      </section>
+
+      <section class="column">
+        <div class="col-header"><div>Testing</div><div class="col-count">2</div></div>
+        <div class="task">
+          <div class="title">End-to-end chat flow tests</div>
+          <div class="meta"><div class="assignees"><div class="avatar">JK</div></div><div class="badge">Medium</div></div>
+          <div class="moved">Moved: Human Review → Testing → Complete</div>
+        </div>
+        <div class="task">
+          <div class="title">Integration: Vercel deploy validation</div>
+          <div class="meta"><div class="assignees"><div class="avatar">KC</div></div><div class="badge">High</div></div>
+          <div class="moved">Moved: AI Research → Testing</div>
+        </div>
+      </section>
+
+      <section class="column">
+        <div class="col-header"><div>Complete</div><div class="col-count">4</div></div>
+
+        <div class="task">
+          <div class="title">Frontend: Implement chat UI (Rhys, Jake)</div>
+          <div class="meta"><div class="assignees"><div class="avatar">RC</div><div class="avatar">JK</div></div><div class="badge">Done</div></div>
+          <div class="moved">Moved: Backlog → AI Research → Testing → Complete</div>
+        </div>
+
+        <div class="task">
+          <div class="title">Backend: API & DB (Rhys, Karl)</div>
+          <div class="meta"><div class="assignees"><div class="avatar">RC</div><div class="avatar">KC</div></div><div class="badge">Done</div></div>
+          <div class="moved">Moved: Backlog → Human Review → Testing → Complete</div>
+        </div>
+
+        <div class="task">
+          <div class="title">Assemble ClickUp evidence PDF</div>
+          <div class="meta"><div class="assignees"><div class="avatar">JK</div></div><div class="badge">Done</div></div>
+          <div class="moved">Moved: Backlog → Complete</div>
+        </div>
+
+        <div class="task">
+          <div class="title">README restructure & live demo link</div>
+          <div class="meta"><div class="assignees"><div class="avatar">RC</div></div><div class="badge">Done</div></div>
+          <div class="moved">Moved: Backlog → Complete</div>
+        </div>
+
+      </section>
+
+    </div>
+
+    <p style="margin-top:12px;color:#9aa4b2;font-size:13px">This mock board fulfills the evidence checklist: AI-aware statuses, decomposed tasks, completed tasks per member, and moved tasks history. Use your browser to open this file in full-screen and capture a screenshot with the URL bar and timestamp visible.</p>
+
+  </div>
+
+  <script>
+    function updateTimestamp(){
+      const el=document.getElementById('timestamp');
+      const now=new Date();
+      el.textContent=now.toLocaleString();
+    }
+    updateTimestamp();
+    setInterval(updateTimestamp,1000);
+  </script>
+</body>
+</html>
