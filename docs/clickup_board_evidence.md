@@ -34,7 +34,7 @@ This document contains a text representation of the ClickUp-style board used as 
 - [ ] [W1] Define project README structure — Assignees: **Rhys Cristian (RC)**, **Jake Cradenas (JK)**
   - Movement: To Do → Backlog
 - [ ] [W1] Research AI prompt guardrails — Assignee: **Karl Castillo (KC)**
-  - Movement: To Do → AI Research → Testing 
+  - Movement: To Do → AI Research → Testing → Complete
 - [ ] [W1] Assemble GitHub proof PDF — Assignee: **Rhys Cristian (RC)**
   - Movement: Backlog → AI Research → Testing → Complete
 
@@ -43,7 +43,7 @@ This document contains a text representation of the ClickUp-style board used as 
 - [ ] [W1] Prototype chat prompt templates — Assignee: **Rhys Cristian (RC)**
   - Movement: Backlog → AI Research → Human Review → Testing → Complete
 - [ ] [W2] Collect training conversation examples — Assignee: **Jake Cradenas (JK)**
-  - Movement: Backlog → AI Research → Testing 
+  - Movement: Backlog → AI Research → Testing → Complete
 
 ### Human Review
 
