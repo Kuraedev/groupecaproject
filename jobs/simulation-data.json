@@ -1,0 +1,91 @@
+{
+  "simulation_scenarios": [
+    {
+      "id": "recruiter-interaction",
+      "scenario": "You are in a call with a recruiter from a tech company interested in Group 2",
+      "context": "Initial screening call with focus on team capabilities and projects",
+      "sample_questions": [
+        "Tell us about your team's biggest achievement",
+        "How do you handle technical challenges?",
+        "What technologies are you most experienced with?"
+      ],
+      "team_strengths_to_highlight": [
+        "Full-stack development capabilities",
+        "DevOps and cloud deployment",
+        "AI integration (Digital Twin project)",
+        "Team collaboration and leadership"
+      ]
+    },
+    {
+      "id": "client-presentation",
+      "scenario": "You are presenting the Digital Twin project to a potential client",
+      "context": "Demonstrating project capabilities, architecture, and team expertise",
+      "key_points": [
+        "AI-powered career assistant digital twin",
+        "Built with Next.js, PostgreSQL, and OpenAI",
+        "Deployed on Vercel with real-time interactions",
+        "Team-oriented development with version control"
+      ],
+      "expected_questions": [
+        "How scalable is this solution?",
+        "What's the cost of maintaining this?",
+        "Can you customize it for our needs?"
+      ]
+    },
+    {
+      "id": "technical-deep-dive",
+      "scenario": "You are explaining the Digital Twin architecture to a technical audience",
+      "context": "Deep technical discussion about implementation details and design decisions",
+      "components": [
+        {
+          "name": "Frontend",
+          "tech": "Next.js 14+, React, TypeScript, Tailwind CSS",
+          "responsibility": "User interface, server-side rendering, API integration"
+        },
+        {
+          "name": "Backend",
+          "tech": "Node.js 18+, OpenAI GPT-4/Claude 3.5",
+          "responsibility": "API routes, request handling, business logic"
+        },
+        {
+          "name": "Database",
+          "tech": "Supabase (PostgreSQL)",
+          "responsibility": "Profile data, conversation history, caching"
+        },
+        {
+          "name": "MCP Server",
+          "tech": "Model Context Protocol tools",
+          "responsibility": "Chat handling, interview simulation, portfolio queries"
+        },
+        {
+          "name": "Deployment",
+          "tech": "Vercel",
+          "responsibility": "Hosting, CI/CD, edge functions, monitoring"
+        }
+      ]
+    },
+    {
+      "id": "user-interview",
+      "scenario": "You are being interviewed as a Group 2 member about your role and contributions",
+      "context": "Post-project interview discussing learning outcomes and team experience",
+      "discussion_topics": [
+        "Your specific role in the Digital Twin project",
+        "Technologies you learned or deepened your expertise in",
+        "Challenges you overcame as a team",
+        "Key achievements and metrics",
+        "Future goals and career direction"
+      ],
+      "star_framework": {
+        "situation": "We built an AI-powered Digital Twin as a team project",
+        "task": "Deliver a production-ready application with full-stack capabilities",
+        "action": "Implemented [specific component], collaborated using Git/GitHub, participated in code reviews",
+        "result": "Successfully deployed, working application with [metric], team learned [skill]"
+      }
+    }
+  ],
+  "metadata": {
+    "created_at": "2026-05-10T00:00:00Z",
+    "total_scenarios": 4,
+    "last_updated": "2026-05-10T00:00:00Z"
+  }
+}

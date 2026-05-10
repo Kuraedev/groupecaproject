@@ -1,0 +1,65 @@
+{
+  "interview_sessions": [
+    {
+      "id": "tech-01",
+      "question": "Explain the difference between var, let, and const in JavaScript.",
+      "difficulty": "beginner",
+      "format": "technical",
+      "expectedTopics": ["JavaScript", "scope", "hoisting", "variable declarations"],
+      "sampleAnswer": "var has function scope and is hoisted. let and const have block scope. const cannot be reassigned. This impacts code reliability and prevents accidental mutations."
+    },
+    {
+      "id": "tech-02",
+      "question": "Design a system to handle high-traffic API requests efficiently.",
+      "difficulty": "advanced",
+      "format": "technical",
+      "expectedTopics": ["scalability", "caching", "load balancing", "database optimization", "async processing"],
+      "sampleAnswer": "Use load balancing, caching layers (Redis), database connection pooling, and async job queues. Implement rate limiting and CDN for static assets."
+    },
+    {
+      "id": "tech-03",
+      "question": "What are the advantages of using TypeScript in a Next.js project?",
+      "difficulty": "intermediate",
+      "format": "technical",
+      "expectedTopics": ["TypeScript", "Next.js", "type safety", "developer experience", "compilation"],
+      "sampleAnswer": "TypeScript provides static type checking, better IDE support, catches errors at compile-time, and improves code maintainability. With Next.js, it enables full-stack type safety."
+    },
+    {
+      "id": "behav-01",
+      "question": "Tell me about a time when you had to work with a difficult team member. How did you handle it?",
+      "difficulty": "intermediate",
+      "format": "behavioral",
+      "expectedTopics": ["collaboration", "conflict resolution", "communication", "emotional intelligence"],
+      "sampleAnswer": "STAR: Situation: Teammate had different coding style causing friction. Task: Maintain team productivity. Action: Initiated discussion about standards, found compromises. Result: Team adopted unified style guide."
+    },
+    {
+      "id": "behav-02",
+      "question": "Describe a project where you took initiative beyond your assigned responsibilities.",
+      "difficulty": "intermediate",
+      "format": "behavioral",
+      "expectedTopics": ["leadership", "ownership", "initiative", "impact"],
+      "sampleAnswer": "STAR: Situation: Digital Twin project needed documentation. Task: Improve clarity for new developers. Action: Created comprehensive guides and examples. Result: Onboarding time reduced by 50%."
+    },
+    {
+      "id": "behav-03",
+      "question": "How do you handle tight deadlines and pressure?",
+      "difficulty": "beginner",
+      "format": "behavioral",
+      "expectedTopics": ["stress management", "prioritization", "communication", "time management"],
+      "sampleAnswer": "I prioritize tasks by impact, communicate early about risks, break work into smaller chunks, and ask for help when needed. I maintain focus and ensure code quality isn't sacrificed."
+    }
+  ],
+  "metadata": {
+    "created_at": "2026-05-10T00:00:00Z",
+    "total_questions": 6,
+    "by_difficulty": {
+      "beginner": 1,
+      "intermediate": 3,
+      "advanced": 2
+    },
+    "by_format": {
+      "technical": 3,
+      "behavioral": 3
+    }
+  }
+}
