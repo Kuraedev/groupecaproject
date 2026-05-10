@@ -11,7 +11,7 @@ This is a production-ready web application featuring:
 - **Tailwind CSS** - Utility-first styling with custom design system
 - **TypeScript** - Full type safety across the application
 - **Anthropic Claude API** - AI-powered chat responses
-- **Supabase Integration** - PostgreSQL database for conversations and leads
+- **Neon Database Integration** - PostgreSQL database for conversations and profile data
 - **Email Capture & CTA** - Lead generation flows
 
 ## 📁 Project Structure
@@ -39,7 +39,7 @@ src/
 │   └── useChat.ts         # Chat state management hook
 ├── lib/
 │   ├── config.ts          # App configuration & constants
-│   └── supabase.ts        # Supabase client setup
+│   └── neon.ts           # Neon Database client setup
 ├── types/
 │   └── index.ts           # TypeScript interfaces
 └── utils/
@@ -60,7 +60,7 @@ Configuration Files:
 
 - Node.js 18+ and npm/yarn
 - An Anthropic API key (for Claude)
-- Supabase account (optional, for data persistence)
+- Neon Database account (optional, for data persistence)
 
 ### Installation
 
@@ -201,7 +201,7 @@ npm run type-check # Run TypeScript checks
 
 To enable conversation persistence and lead tracking:
 
-1. **Create Supabase tables:**
+1. **Create Neon Database tables:**
 
 ```sql
 -- Conversations table
@@ -226,9 +226,9 @@ CREATE TABLE leads (
 );
 ```
 
-2. **Enable Supabase in code:**
-   - Update `.env.local` with Supabase credentials
-   - Uncomment Supabase calls in `src/app/api/leads/route.ts`
+2. **Enable Neon Database in code:**
+   - Update `.env.local` with Neon Database credentials
+   - Uncomment Neon Database calls in `src/app/api/leads/route.ts`
    - Implement conversation storage in `useChat` hook
 
 ## 📝 Configuration

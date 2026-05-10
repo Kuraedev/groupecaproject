@@ -56,7 +56,7 @@ This document lists all files created during the Next.js conversion.
 ### Library & Configuration
 ```
 ✅ src/lib/config.ts            — App configuration and constants
-✅ src/lib/supabase.ts          — Supabase client and database helpers
+✅ src/lib/neon.ts              — Neon Database client and database helpers
 ```
 
 ### Types
@@ -97,7 +97,7 @@ Digital-twin2/
 │   │   └── useChat.ts
 │   ├── lib/
 │   │   ├── config.ts
-│   │   └── supabase.ts
+│   │   └── neon.ts
 │   ├── types/
 │   │   └── index.ts
 │   └── utils/
@@ -167,7 +167,7 @@ Digital-twin2/
 **useChat.ts** - Custom React hook for chat management  
 **config.ts** - Application configuration and constants  
 **helpers.ts** - Utility functions for text, formatting, validation  
-**supabase.ts** - Database client and operations  
+**neon.ts** - Database client and operations  
 
 ### Configuration
 

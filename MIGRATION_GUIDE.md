@@ -142,7 +142,7 @@ Form submission → submitLead() → Inline validation
 **After:**
 ```
 Form submission → LeadForm component → /api/leads endpoint
-→ Validation + Supabase storage → Success response
+→ Validation + Neon Database storage → Success response
 ```
 
 ## Configuration
@@ -160,7 +160,7 @@ const API_KEY = process.env.ANTHROPIC_API_KEY
 ```
 # .env.local
 NEXT_PUBLIC_ANTHROPIC_API_KEY=***
-NEXT_PUBLIC_SUPABASE_URL=***
+NEXT_PUBLIC_NEON_URL=***
 NEXT_PUBLIC_APP_NAME=***
 
 # Loaded in config.ts

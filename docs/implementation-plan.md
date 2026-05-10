@@ -9,7 +9,7 @@ Deliver the Digital Twin Career Agent in a sequence that matches the approved de
 ### Phase 1: Foundation
 
 1. Finalize content schemas for profile, projects, experiences, and publication state.
-2. Set up the Supabase tables and seed minimal profile data.
+2. Set up the Neon Database tables and seed minimal profile data.
 3. Confirm the Next.js route structure for public pages and API handlers.
 
 ### Phase 2: Profile and Content Editing

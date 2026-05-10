@@ -14,9 +14,9 @@
 | **Frontend** | Next.js 14+ | User interface, server-side rendering, API routes |
 | **Backend** | Node.js 18+ | API server, request handling, business logic |
 | **AI Model** | OpenAI GPT-4 / Claude 3.5 | Large language model for response generation |
-| **Database** | Supabase (PostgreSQL) | Profile data, conversation history, cache storage |
-| **Caching** | Supabase Cache / Redis | Response caching, performance optimization |
-| **Authentication** | Supabase Auth / JWT | API security, user session management |
+| **Database** | Neon Database (PostgreSQL) | Profile data, conversation history, cache storage |
+| **Caching** | Neon Cache / Redis | Response caching, performance optimization |
+| **Authentication** | Neon Auth / JWT | API security, user session management |
 | **Deployment** | Vercel | Hosting, CI/CD, edge functions, monitoring |
 | **Monitoring** | Vercel Analytics + Sentry | Error tracking, performance metrics, uptime monitoring |
 | **Version Control** | GitHub | Source code management, deployment triggers |
@@ -67,7 +67,7 @@
     ┌──────────────┼──────────────┐
     ▼              ▼              ▼
  ┌─────┐    ┌──────────┐    ┌─────────┐
- │Cache│    │Supabase  │    │Response │
+ │Cache│    │Neon     │    │Response │
  │Store│    │Database  │    │Logger   │
  └─────┘    └──────────┘    └─────────┘
 ```
@@ -76,7 +76,7 @@
 
 1. **User Query** → User submits question through chat interface
 2. **Request Validation** → API validates input, checks rate limits
-3. **Context Retrieval** → System loads Reggie's profile data from Supabase
+3. **Context Retrieval** → System loads Karl Castillo's profile data from Neon Database
 4. **Cache Check** → System checks for cached responses to identical queries
 5. **Prompt Construction** → System instructions + context + user query combined
 6. **AI Generation** → Query sent to OpenAI/Claude API for response generation
@@ -123,7 +123,7 @@
 - Implement TTL (time-to-live) for cache entries
 - Retrieve cached responses for optimization
 
-#### Database Layer (Supabase)
+#### Database Layer (Neon Database)
 - Store Reggie's profile data (skills, projects, experiences)
 - Maintain conversation history
 - Store cached responses
