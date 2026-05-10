@@ -36,7 +36,7 @@ Group 2 is a team of Information Technology students from St. Paul University wh
 - **Cyrene Joy Lopez** (lopezycyrene515@gmail.com) – UI/UX design and user flow specialist
 - **Lawrence Nizer Remudaro** (nizerremudaro6@gmail.com) – Full-stack solutions and system design expert
 - **Aaron Josh Pocot** (aaronjoshpocot@gmail.com) – Cybersecurity and secure coding specialist
-- **Reggie Lovett** (reggielovett143@gmail.com) – Project management and collaboration lead',
+- **Karl Castillo** (karlcastillo@gmail.com) – Project management and collaboration lead',
     'team'
   ),
   (
