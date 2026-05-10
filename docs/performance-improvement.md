@@ -219,3 +219,11 @@ Week 4 implementation of the MCP server provides a robust, type-safe foundation 
 **Performance Baseline:** Week 4 MCP Implementation  
 **Status:** Testing & Integration Ready  
 **Team:** Group 2 Digital Twin
+
+## Screenshots
+
+### Digital Twin Interface
+![Digital Twin](./digital-twin.jpeg)
+
+### Portfolio Page
+![Portfolio](./portfolio.jpeg)
