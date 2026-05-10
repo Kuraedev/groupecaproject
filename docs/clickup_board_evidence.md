@@ -34,23 +34,23 @@ This document contains a text representation of the ClickUp-style board used as 
 - [ ] [W1] Define project README structure — Assignees: **Rhys Cristian (RC)**, **Jake Cradenas (JK)**
   - Movement: To Do → Backlog
 - [ ] [W1] Research AI prompt guardrails — Assignee: **Karl Castillo (KC)**
-  - Movement: To Do → AI Research
+  - Movement: To Do → AI Research → Testing 
 - [ ] [W1] Assemble GitHub proof PDF — Assignee: **Rhys Cristian (RC)**
-  - Movement: Backlog → AI Research
+  - Movement: Backlog → AI Research → Testing → Complete
 
 ### AI Research
 
 - [ ] [W1] Prototype chat prompt templates — Assignee: **Rhys Cristian (RC)**
-  - Movement: Backlog → AI Research → Human Review
+  - Movement: Backlog → AI Research → Human Review → Testing → Complete
 - [ ] [W2] Collect training conversation examples — Assignee: **Jake Cradenas (JK)**
-  - Movement: Backlog → AI Research
+  - Movement: Backlog → AI Research → Testing 
 
 ### Human Review
 
 - [ ] [W2] Review system prompts & guardrails — Assignee: **Karl Castillo (KC)**
-  - Movement: AI Research → Human Review → Testing
+  - Movement: AI Research → Human Review → Testing → Complete
 - [ ] [W2] Verify profile data accuracy — Assignee: **Rhys Cristian (RC)**
-  - Movement: Backlog → Human Review
+  - Movement: Backlog → Human Review → Testing → Complete
 
 ### Testing
 
@@ -66,7 +66,7 @@ This document contains a text representation of the ClickUp-style board used as 
 - [x] [W1 → W2] Backend: API & DB — Assignees: **Rhys Cristian (RC)**, **Karl Castillo (KC)**
   - Movement: Backlog → Human Review → Testing → Complete
 - [x] [W2] Assemble ClickUp evidence PDF — Assignee: **Jake Cradenas (JK)**
-  - Movement: Backlog → Complete
+  - Movement: Backlog → Complete 
 - [x] [W1] README restructure & live demo link — Assignee: **Rhys Cristian (RC)**
   - Movement: Backlog → Complete
 
