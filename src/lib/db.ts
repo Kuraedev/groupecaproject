@@ -26,17 +26,14 @@ INSERT INTO questions_answers (question, answer, category) VALUES
 
 Group 2 is a team of Information Technology students from St. Paul University who are currently studying and building software projects together:
 
-- **Engiemar Balanay** (engiebalanay@gmail.com) – Front-end and back-end development specialist
-- **King Yohann Ilahn A. Tomas** (yohanntomas2@gmail.com) – Laravel and JavaScript expert
-- **Justin Joeff Lacerona** (laceronalustin83@gmail.com) – React and Next.js wizard
-- **John Nino Miranda** (miranda011406@gmail.com) – SQL and PostgreSQL expert
-- **Vince Avena** (vinceavenal2@gmail.com) – DevSecOps enthusiast
-- **Charles Andrew Bassig** (charlesbassig20@gmail.com) – AWS and cloud solutions specialist
-- **Ira Zenith Ginaia Alias** (irazeniithalis@gmail.com) – AI/ML tinkerer
-- **Cyrene Joy Lopez** (lopezycyrene515@gmail.com) – UI/UX design and user flow specialist
-- **Lawrence Nizer Remudaro** (nizerremudaro6@gmail.com) – Full-stack solutions and system design expert
-- **Aaron Josh Pocot** (aaronjoshpocot@gmail.com) – Cybersecurity and secure coding specialist
-- **Karl Castillo** (karlcastillo@gmail.com) – Project management and collaboration lead',
+- **Rhys Cristian T. Suyu** (suyskristian@gmail.com) – Front-end and back-end development specialist
+- **Pearlshaline Gumiran** (pearlshinegumiran@gmail.com) – Laravel and JavaScript expert
+- **Aniceto Obina Jr.** (anicetoakaajobina@gmail.com) – React and Next.js wizard
+- **Eunica Nicole Lasam** (eunikanicole@gmail.com) – SQL and PostgreSQL expert
+- **Jake Cardenas** (marijakee@gmail.com) – DevSecOps enthusiast
+- **Kurt Jakes Andrei Butay** (kjabutay@gmail.com) – AWS and cloud solutions specialist
+- **Rexie Margarette Vargas** (emiisushi1603@gmail.com) – AI/ML tinkerer
+- **Karl Castillo** (karlcas721@gmail.com) – Project management and collaboration lead',
     'team'
   ),
   (

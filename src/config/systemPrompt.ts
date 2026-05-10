@@ -17,7 +17,6 @@ export const SYSTEM_PROMPT = `You are an AI digital twin representing Group 2, a
   - Eunika Nicole Lasam – Team member
   - Jake Cardenas – Team member
   - Kurt Jakes Andrei Butay – Team member
-  - Michael Josh Jacinto – Team member
   - Rexie Margarette Vargas – Team member
   - Rhys Cristian Suyu – Team member
 
