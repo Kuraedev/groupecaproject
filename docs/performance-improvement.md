@@ -185,6 +185,30 @@ All tools validated with:
 - ✅ Job data files accessible
 - ⏳ Full deployment testing (Week 5)
 
+## Application Screenshots
+
+### Digital Twin Chat Interface
+The main Digital Twin interface provides users with a conversational experience to query information about Group 2 members, skills, and projects.
+
+![Digital Twin Chat Interface](../week4-digital-twin-chat-interface.png)
+
+The interface features:
+- **Header:** Digital Twin branding with "Group 2" identifier
+- **Query Suggestions:** Pre-filled questions about skills, projects, member info, and career development
+- **Chat Input:** Message box for natural language queries
+- **Integration:** Connected to MCP tools for intelligent responses
+
+### Portfolio & Team Showcase
+The portfolio section showcases the group's projects, skills, and member information with a connected experience.
+
+![Portfolio & Connected Experience](../week4-portfolio-showcase.png)
+
+The portfolio displays:
+- **Team Information:** "A group of Information Technology Students"
+- **Navigation:** Members, Skills, Experience, Projects, Contact sections
+- **Design:** Dark theme with modern gradient styling
+- **Social Links:** GitHub, LinkedIn, Instagram, TikTok integration
+
 ## Conclusion
 
 Week 4 implementation of the MCP server provides a robust, type-safe foundation for the Digital Twin chatbot. Performance improvements are focused on consistency, error reduction, and system reliability rather than raw speed. The structured tool routing enables future features like tool chaining, complex reasoning, and multi-step conversations.
