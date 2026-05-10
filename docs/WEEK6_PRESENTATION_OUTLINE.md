@@ -110,16 +110,17 @@
 ---
 
 ## 4. Slide-by-Slide Outline
-1. Title + Team
-2. Problem Statement
+1. Introduction
+2. Problem and Goals
 3. Solution Overview
-4. PRD-Aligned Requirements
-5. Architecture Diagram
-6. Feature Walkthrough
-7. Performance and Validation Results
-8. Evidence Artifacts (ClickUp + GitHub + Docs)
-9. Live Demo Steps (Final Segment)
-10. Limitations, Next Steps, Q&A
+4. Architecture
+5. Feature Walkthrough
+6. Implementation Highlights
+7. Performance and Reliability 
+8. Evidence and Team Delivery
+9. Live Demo Steps 
+10. Closing (Final Segment)
+
 
 
 ---
