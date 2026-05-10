@@ -52,7 +52,7 @@
 
 "The MCP layer is important because it gives us input validation, structured handling, and more consistent outputs."
 
-"For data persistence, we use Neon database—a PostgreSQL backend that stores Reggie's profile information, including skills, projects, experiences, and conversation history. When users ask the chatbot questions, the system queries this Neon database to retrieve accurate, documented information, ensuring all responses are grounded in real profile data rather than hallucinations."
+"For data persistence, we use Neon database—a PostgreSQL backend that stores our Group's profile information, including skills, projects, experiences, and conversation history. When users ask the chatbot questions, the system queries this Neon database to retrieve accurate, documented information, ensuring all responses are grounded in real profile data rather than hallucinations."
 
 "This architecture helps reduce malformed requests, keeps responses reliable, and ensures the digital twin has contextual knowledge to answer profile-specific questions accurately."
 

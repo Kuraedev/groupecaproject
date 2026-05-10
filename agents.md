@@ -353,7 +353,7 @@ This connects to [related concept or experience]..."
 ```
 database/
 ├── users/
-│   └── reggie_lovett/
+│   └── karl_castillo/
 │       ├── profile
 │       ├── skills
 │       ├── projects
