@@ -19,49 +19,55 @@ Date: 2026-05-10
 
 This document contains a text representation of the ClickUp-style board used as evidence. For a visual screenshot with the URL bar and timestamp, open docs/clickup_board_evidence.html in your browser and capture a full-screen screenshot.
 
+## Week Coverage
+
+- Week 1 tasks focus on setup, prompt research, and first-round implementation.
+- Week 2 tasks expand into review, testing, and completion.
+- The board shows more tasks in progress and complete by Week 2 than in Week 1.
+
 ---
 
 ## Columns & Tasks
 
 ### Backlog
 
-- [ ] Define project README structure — Assignees: **Rhys Cristian (RC)**, **Jake Cradenas (JK)**
+- [ ] [W1] Define project README structure — Assignees: **Rhys Cristian (RC)**, **Jake Cradenas (JK)**
   - Movement: To Do → Backlog
-- [ ] Research AI prompt guardrails — Assignee: **Karl Castillo (KC)**
+- [ ] [W1] Research AI prompt guardrails — Assignee: **Karl Castillo (KC)**
   - Movement: To Do → AI Research
-- [ ] Assemble GitHub proof PDF — Assignee: **Rhys Cristian (RC)**
+- [ ] [W1] Assemble GitHub proof PDF — Assignee: **Rhys Cristian (RC)**
   - Movement: Backlog → AI Research
 
 ### AI Research
 
-- [ ] Prototype chat prompt templates — Assignee: **Rhys Cristian (RC)**
+- [ ] [W1] Prototype chat prompt templates — Assignee: **Rhys Cristian (RC)**
   - Movement: Backlog → AI Research → Human Review
-- [ ] Collect training conversation examples — Assignee: **Jake Cradenas (JK)**
+- [ ] [W2] Collect training conversation examples — Assignee: **Jake Cradenas (JK)**
   - Movement: Backlog → AI Research
 
 ### Human Review
 
-- [ ] Review system prompts & guardrails — Assignee: **Karl Castillo (KC)**
+- [ ] [W2] Review system prompts & guardrails — Assignee: **Karl Castillo (KC)**
   - Movement: AI Research → Human Review → Testing
-- [ ] Verify profile data accuracy — Assignee: **Rhys Cristian (RC)**
+- [ ] [W2] Verify profile data accuracy — Assignee: **Rhys Cristian (RC)**
   - Movement: Backlog → Human Review
 
 ### Testing
 
-- [ ] End-to-end chat flow tests — Assignee: **Jake Cradenas (JK)**
+- [ ] [W2] End-to-end chat flow tests — Assignee: **Jake Cradenas (JK)**
   - Movement: Human Review → Testing → Complete
-- [ ] Integration: Vercel deploy validation — Assignee: **Karl Castillo (KC)**
-  - Movement: AI Research → Testing
+- [ ] [W2] Integration: Vercel deploy validation — Assignee: **Karl Castillo (KC)**
+  - Movement: AI Research → Testing → Complete
 
 ### Complete
 
-- [x] Frontend: Implement chat UI — Assignees: **Rhys Cristian (RC)**, **Jake Cradenas (JK)**
+- [x] [W1 → W2] Frontend: Implement chat UI — Assignees: **Rhys Cristian (RC)**, **Jake Cradenas (JK)**
   - Movement: Backlog → AI Research → Testing → Complete
-- [x] Backend: API & DB — Assignees: **Rhys Cristian (RC)**, **Karl Castillo (KC)**
+- [x] [W1 → W2] Backend: API & DB — Assignees: **Rhys Cristian (RC)**, **Karl Castillo (KC)**
   - Movement: Backlog → Human Review → Testing → Complete
-- [x] Assemble ClickUp evidence PDF — Assignee: **Jake Cradenas (JK)**
+- [x] [W2] Assemble ClickUp evidence PDF — Assignee: **Jake Cradenas (JK)**
   - Movement: Backlog → Complete
-- [x] README restructure & live demo link — Assignee: **Rhys Cristian (RC)**
+- [x] [W1] README restructure & live demo link — Assignee: **Rhys Cristian (RC)**
   - Movement: Backlog → Complete
 
 ---
