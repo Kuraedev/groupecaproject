@@ -222,3 +222,8 @@ Week 4 implementation of the MCP server provides a robust, type-safe foundation 
 
 ## Screenshots
 
+### Digital Twin Interface
+![Digital Twin](./digital-twin.jpeg)
+
+### Portfolio Page
+![Portfolio](./portfolio.jpeg)
