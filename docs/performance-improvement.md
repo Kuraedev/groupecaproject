@@ -190,7 +190,7 @@ All tools validated with:
 ### Digital Twin Chat Interface
 The main Digital Twin interface provides users with a conversational experience to query information about Group 2 members, skills, and projects.
 
-![Digital Twin Chat Interface](./week4-digital-twin-chat-interface.png)
+![Digital Twin Chat Interface](./digital-twin.jpeg)
 
 The interface features:
 - **Header:** Digital Twin branding with "Group 2" identifier
@@ -201,7 +201,7 @@ The interface features:
 ### Portfolio & Team Showcase
 The portfolio section showcases the group's projects, skills, and member information with a connected experience.
 
-![Portfolio & Connected Experience](./week4-portfolio-showcase.png)
+![Portfolio & Connected Experience](./portfolio.jpeg)
 
 The portfolio displays:
 - **Team Information:** "A group of Information Technology Students"
