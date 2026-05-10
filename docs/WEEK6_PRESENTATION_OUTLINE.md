@@ -34,9 +34,9 @@
 **Say this:**
 "Good day, we are Group 2, and our project is Digital Twin Nexus - Portfolio Edition. Our goal is to turn a static resume into a smart, interactive digital profile."
 
-"Today, we will show the problem, our solution, the architecture, a live demo, performance evidence, and our next steps."
+"Today, we will show the problem, our solution, the architecture, performance evidence, and then end with a live demo."
 
-### 1:00-2:00 | Speaker 2: Pearlshaline Gumiran (Problem and Goals)
+### 1:00-2:00 | Speaker 2: Rhys Cristian T. Suyu (Problem and Goals)
 **Say this:**
 "The problem is simple: traditional resumes are not adaptive. They do not adjust to recruiters, clients, or collaborators."
 
@@ -44,7 +44,7 @@
 
 "This directly aligns with our PRD requirements for profile input, AI summaries, audience tailoring, and public portfolio sharing."
 
-### 2:00-3:00 | Speaker 3: Aniceto Obina Jr (Architecture)
+### 2:00-3:00 | Speaker 3: Pearlshaline Gumiran (Architecture)
 **Say this:**
 "Our system uses Next.js for frontend and API routes, an MCP server layer for tool routing, and AI model integration for responses."
 
@@ -52,7 +52,7 @@
 
 "This architecture helps reduce malformed requests and keeps responses reliable."
 
-### 3:00-4:00 | Speaker 4: Eunika Nicole Lasam (Feature Walkthrough)
+### 3:00-4:00 | Speaker 4: Jake Cardenas (Feature Walkthrough)
 **Say this:**
 "In our app, users can ask profile-related questions, simulate interview prompts, and explore portfolio sections including members, skills, and projects."
 
@@ -60,15 +60,15 @@
 
 "This improves both usability and presentation quality for professional profiles."
 
-### 4:00-6:00 | Speaker 5: Jake Cardenas (Live Demo)
-**Say this while demonstrating:**
-1. "First, we open the Digital Twin chat interface."
-2. "Next, we ask a technical question and show the generated response."
-3. "Then, we trigger an interview-style prompt to show simulation behavior."
-4. "After that, we open the portfolio page and show members and key sections."
-5. "Finally, we open the documentation evidence and recent repository updates."
+### 4:00-5:00 | Speaker 5: Rexie Margarette Vargas and Eunika Nicole Lasam (Implementation Highlights)
+**Say this:**
+"At this stage, our core implementation is complete: chat flow, interview simulation, and portfolio sections are connected and working together."
 
-### 6:00-7:00 | Speaker 6: Kurt Jakes Andrei Butay (Performance and Reliability)
+"Our architecture supports clean request handling and organized outputs, which helps us present a reliable user experience."
+
+"In the final part, we will show all of this in a short live demo."
+
+### 5:00-6:00 | Speaker 6: Kurt Jakes Andrei Butay and Aniceto Obina Jr (Performance and Reliability)
 **Say this:**
 "Our improvements focused on reliability and consistency."
 
@@ -76,7 +76,7 @@
 
 "This means safer outputs, fewer malformed requests, and smoother tool behavior during actual use."
 
-### 7:00-8:00 | Speaker 7: Rexie Margarette Vargas (Evidence and Team Delivery)
+### 6:00-7:00 | Speaker 7: Rhys Cristian T. Suyu and Jake Cardenas (Evidence and Team Delivery)
 **Say this:**
 "For evidence, we tracked work through weekly artifacts, ClickUp board records, and GitHub commit history."
 
@@ -84,8 +84,15 @@
 
 "All major changes are traceable in repository documentation and commit logs."
 
-### 8:00-10:00 | Speaker 8: Rhys Cristian Suyu (Limitations, Next Steps, Closing)
-**Say this:**
+### 7:00-10:00 | Speaker 8: Rhys Cristian Suyu (Live Demo + Closing)
+**Say this while demonstrating:**
+1. "First, we open the Digital Twin chat interface."
+2. "Next, we ask a technical question and show the generated response."
+3. "Then, we trigger an interview-style prompt to show simulation behavior."
+4. "Finally, we open the portfolio page and show members and key sections."
+
+
+**Then say this to close:**
 "Current limitations include ongoing production hardening and additional edge-case testing."
 
 "Our next steps are stronger analytics, deeper personalization, and broader validation coverage."
@@ -103,9 +110,9 @@
 4. PRD-Aligned Requirements
 5. Architecture Diagram
 6. Feature Walkthrough
-7. Live Demo Steps
-8. Performance and Validation Results
-9. Evidence Artifacts (ClickUp + GitHub + Docs)
+7. Performance and Validation Results
+8. Evidence Artifacts (ClickUp + GitHub + Docs)
+9. Live Demo Steps (Final Segment)
 10. Limitations, Next Steps, Q&A
 
 
