@@ -17,10 +17,12 @@ export default function ChatPage() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [copiedMessageIndex, setCopiedMessageIndex] = useState<number | null>(null);
   const [questions, setQuestions] = useState<Question[]>([]);
   const [loadingQuestions, setLoadingQuestions] = useState(true);
   const [recentQuestions, setRecentQuestions] = useState<string[]>([]);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   // Auto-scroll to bottom when messages change
   useEffect(() => {
@@ -45,15 +47,35 @@ export default function ChatPage() {
     loadQuestions();
   }, []);
 
-  async function sendMessage(e: FormEvent) {
-    e.preventDefault();
-
-    const text = input.trim();
-    if (!text || isLoading) {
+  function adjustTextareaHeight() {
+    const textarea = textareaRef.current;
+    if (!textarea) {
       return;
     }
 
-    const nextMessages = [...messages, { role: 'user' as const, content: text }];
+    textarea.style.height = 'auto';
+    const nextHeight = Math.min(textarea.scrollHeight, 140);
+    textarea.style.height = `${nextHeight}px`;
+  }
+
+  useEffect(() => {
+    adjustTextareaHeight();
+  }, [input]);
+
+  async function sendText(text: string, shouldTrackRecent: boolean = false) {
+    const normalizedText = text.trim();
+    if (!normalizedText || isLoading) {
+      return;
+    }
+
+    if (shouldTrackRecent) {
+      setRecentQuestions((prev) => {
+        const updated = [normalizedText, ...prev.filter((q) => q !== normalizedText)];
+        return updated.slice(0, 5);
+      });
+    }
+
+    const nextMessages = [...messages, { role: 'user' as const, content: normalizedText }];
     setMessages(nextMessages);
     setInput('');
     setIsLoading(true);
@@ -62,7 +84,7 @@ export default function ChatPage() {
       const res = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ messages: nextMessages, userQuestion: text }),
+        body: JSON.stringify({ messages: nextMessages, userQuestion: normalizedText }),
       });
 
       if (!res.ok) {
@@ -78,42 +100,49 @@ export default function ChatPage() {
     } finally {
       setIsLoading(false);
     }
+  }
+
+  async function sendMessage(e: FormEvent) {
+    e.preventDefault();
+    const text = input.trim();
+    if (!text || isLoading) {
+      return;
+    }
+
+    await sendText(text);
   }
 
   // Handle clicking a question to send it
   async function handleQuestionClick(question: string) {
-    // Add to recent questions (keep last 5)
-    setRecentQuestions((prev) => {
-      const updated = [question, ...prev.filter((q) => q !== question)];
-      return updated.slice(0, 5);
-    });
+    await sendText(question, true);
+  }
 
-    setInput(question);
-    const nextMessages = [...messages, { role: 'user' as const, content: question }];
-    setMessages(nextMessages);
-    setIsLoading(true);
-
+  async function handleCopyMessage(content: string, idx: number) {
     try {
-      const res = await fetch('/api/chat', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ messages: nextMessages, userQuestion: question }),
-      });
-
-      if (!res.ok) {
-        throw new Error('Unable to get response.');
-      }
-
-      const data = (await res.json()) as { reply?: string };
-      const reply = data.reply?.trim() || 'I could not generate a response.';
-      setMessages((prev) => [...prev, { role: 'assistant', content: reply }]);
+      await navigator.clipboard.writeText(content);
+      setCopiedMessageIndex(idx);
+      window.setTimeout(() => {
+        setCopiedMessageIndex((current) => (current === idx ? null : current));
+      }, 1500);
     } catch (error) {
-      const message = error instanceof Error ? error.message : 'Unexpected error occurred.';
-      setMessages((prev) => [...prev, { role: 'assistant', content: `Error: ${message}` }]);
-    } finally {
-      setIsLoading(false);
+      console.error('Unable to copy message:', error);
     }
   }
+
+  const defaultPromptText = [
+    'Who are the members of Group 2?',
+    'What are your skills?',
+    'What projects have you built recently?',
+    'How can I contact the group?',
+  ];
+
+  const quickPromptItems = questions.length > 0 ? questions.slice(0, 5).map((q) => q.question) : defaultPromptText;
+  const followUpPromptItems =
+    recentQuestions.length > 0
+      ? recentQuestions
+      : questions.length > 0
+        ? questions.slice(0, 5).map((q) => q.question)
+        : defaultPromptText;
 
   return (
     <main className="shell">
@@ -130,7 +159,7 @@ export default function ChatPage() {
       <section className="chat-panel">
         {messages.length === 0 ? (
           <div className="empty-state">
-            <p>Ask anything about our skills, projects, and experience.</p>
+            <p>Ask anything about Group 2 members, skills, projects, and contact information.</p>
             <div className="starter-grid">
               {loadingQuestions ? (
                 <p style={{ textAlign: 'center', color: '#64748b' }}>Loading questions...</p>
@@ -141,6 +170,7 @@ export default function ChatPage() {
                     type="button" 
                     onClick={() => handleQuestionClick(q.question)}
                     className="question-btn"
+                    disabled={isLoading}
                   >
                     {q.question}
                   </button>
@@ -152,12 +182,35 @@ export default function ChatPage() {
           </div>
         ) : (
           <div className="messages">
+            <div className="prompt-strip">
+              <p className="prompt-label">Quick prompts</p>
+              <div className="prompt-row">
+                {loadingQuestions ? (
+                  <button type="button" className="chip chip-muted" disabled>
+                    Loading prompts...
+                  </button>
+                ) : (
+                  quickPromptItems.map((question, idx) => (
+                    <button
+                      key={`${question}-${idx}`}
+                      type="button"
+                      onClick={() => handleQuestionClick(question)}
+                      className="chip"
+                      disabled={isLoading}
+                    >
+                      {question}
+                    </button>
+                  ))
+                )}
+              </div>
+            </div>
+
             {/* Show recent questions at the top */}
-            {recentQuestions.length > 0 && (
+            {followUpPromptItems.length > 0 && (
               <div className="recent-questions">
-                <p className="recent-label">Quick follow-up:</p>
+                <p className="recent-label">Follow-up prompts</p>
                 <div className="recent-grid">
-                  {recentQuestions.map((q, idx) => (
+                  {followUpPromptItems.map((q, idx) => (
                     <button
                       key={idx}
                       type="button"
@@ -174,8 +227,20 @@ export default function ChatPage() {
             
             {messages.map((message, idx) => (
               <article key={`${message.role}-${idx}`} className={`msg msg-${message.role}`}>
-                <p className="msg-role">{message.role === 'user' ? 'YOU' : 'GROUP 2'}</p>
-                <p style={{ margin: '0.5rem 0 0', lineHeight: '1.6' }}>{message.content}</p>
+                <div className="msg-head">
+                  <p className="msg-role">{message.role === 'user' ? 'YOU' : 'GROUP 2'}</p>
+                  {message.role === 'assistant' && (
+                    <button
+                      type="button"
+                      className="msg-copy"
+                      onClick={() => handleCopyMessage(message.content, idx)}
+                      title="Copy message"
+                    >
+                      {copiedMessageIndex === idx ? 'Copied' : 'Copy'}
+                    </button>
+                  )}
+                </div>
+                <div className="msg-content">{message.content}</div>
               </article>
             ))}
             
@@ -198,19 +263,30 @@ export default function ChatPage() {
         <label htmlFor="message" className="sr-only">
           Message
         </label>
-        <textarea
-          id="message"
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          rows={1}
-          placeholder="Type your question..."
-          onKeyPress={(e) => {
-            if (e.key === 'Enter' && !e.shiftKey) {
-              e.preventDefault();
-              sendMessage(e as any);
-            }
-          }}
-        />
+        <div className="composer-input">
+          <textarea
+            ref={textareaRef}
+            id="message"
+            value={input}
+            onChange={(e) => {
+              setInput(e.target.value);
+              adjustTextareaHeight();
+            }}
+            rows={1}
+            placeholder="Type your question..."
+            maxLength={300}
+            onKeyPress={(e) => {
+              if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendMessage(e as any);
+              }
+            }}
+          />
+          <div className="composer-meta" aria-live="polite">
+            <span>Press Enter to send · Shift+Enter for new line</span>
+            <span>{input.length}/300</span>
+          </div>
+        </div>
         <button type="submit" disabled={isLoading || !input.trim()} title="Send message">
           ↑
         </button>

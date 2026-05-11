@@ -16,7 +16,7 @@ export const chatTool: Tool = {
     userId: 'optional',
   },
   handler: async (input: Record<string, unknown>): Promise<unknown> => {
-    const { message, context, userId } = input as ChatInput;
+    const { message, context, userId } = input as unknown as ChatInput;
 
     if (!message || typeof message !== 'string') {
       throw new Error('Message is required and must be a string');

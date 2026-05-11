@@ -51,6 +51,21 @@ CREATE TABLE IF NOT EXISTS questions_answers (
 
 CREATE INDEX IF NOT EXISTS idx_category ON questions_answers(category);
 CREATE INDEX IF NOT EXISTS idx_question ON questions_answers(question);
+
+CREATE TABLE IF NOT EXISTS group_members (
+  id SERIAL PRIMARY KEY,
+  display_name VARCHAR(200) NOT NULL UNIQUE,
+  email VARCHAR(255) NOT NULL UNIQUE,
+  skills TEXT NOT NULL,
+  summary TEXT NOT NULL,
+  aliases TEXT[] NOT NULL DEFAULT '{}'::text[],
+  group_name VARCHAR(100) DEFAULT 'Group 2',
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE INDEX IF NOT EXISTS idx_group_members_name ON group_members(display_name);
+CREATE INDEX IF NOT EXISTS idx_group_members_email ON group_members(email);
 `;
 
 const sampleData = [
@@ -204,6 +219,95 @@ You can reach out to any team member directly via email:
 
 Feel free to reach out with questions, collaboration opportunities, or feedback!`,
   },
+  {
+    question: 'Group 2 skills',
+    category: 'skills',
+    answer:
+      'Group 2 works across frontend, backend, database, cloud, security, AI/ML, and UI/UX. Ask "What are your skills?" for the full list.',
+  },
+  {
+    question: 'Group 2 tech stack',
+    category: 'skills',
+    answer:
+      'Our stack includes React, Next.js, Node.js, Laravel, PostgreSQL, AWS, and modern DevOps workflows.',
+  },
+  {
+    question: 'Group 2 projects',
+    category: 'projects',
+    answer:
+      'Group 2 projects include a Digital Twin chatbot platform, a portfolio site, and cloud-backed full-stack learning builds.',
+  },
+  {
+    question: 'Tell me about Group 2',
+    category: 'team',
+    answer:
+      'Group 2 is a collaborative BSIT team from St. Paul University focused on practical software development, teamwork, and continuous learning.',
+  },
+  {
+    question: 'Group 2 contact',
+    category: 'contact',
+    answer:
+      'You can contact Group 2 through the listed member emails. Ask "How can I contact the group?" for full details.',
+  },
+];
+
+const memberData = [
+  {
+    displayName: 'Rhys Cristian Suyu',
+    email: 'suyskristian@gmail.com',
+    skills: 'Front-end development, back-end development, responsive UI, collaborative project work',
+    summary: 'Rhys focuses on full-stack web development and collaborative software projects.',
+    aliases: ['Rhys', 'Rhys Suyu', 'Rhys Cristian T. Suyu'],
+  },
+  {
+    displayName: 'Pearlshaline Gumiran',
+    email: 'pearlshinegumiran@gmail.com',
+    skills: 'Laravel, JavaScript, application logic, team collaboration',
+    summary: 'Pearlshaline contributes backend-friendly application development and JavaScript work.',
+    aliases: ['Pearlshaline', 'Pearl Gumiran', 'Gumiran'],
+  },
+  {
+    displayName: 'Aniceto Obina Jr',
+    email: 'anicetoakaajobina@gmail.com',
+    skills: 'React, Next.js, component design, modern frontend development',
+    summary: 'Aniceto works with React and Next.js to build polished user interfaces.',
+    aliases: ['Aniceto', 'Aniceto Obina', 'Obina'],
+  },
+  {
+    displayName: 'Eunika Nicole Lasam',
+    email: 'eunikanicole@gmail.com',
+    skills: 'SQL, PostgreSQL, data modeling, database support',
+    summary: 'Eunika handles database work and supports data organization for the team.',
+    aliases: ['Eunika', 'Eunica', 'Lasam'],
+  },
+  {
+    displayName: 'Jake Cardenas',
+    email: 'marijakee@gmail.com',
+    skills: 'DevSecOps, security-focused workflows, deployment discipline',
+    summary: 'Jake brings a security-minded approach and a DevSecOps perspective.',
+    aliases: ['Jake', 'Cardenas'],
+  },
+  {
+    displayName: 'Kurt Jakes Andrei Butay',
+    email: 'kjabutay@gmail.com',
+    skills: 'AWS, cloud solutions, deployment support, infrastructure awareness',
+    summary: 'Kurt focuses on cloud solutions and AWS-oriented project support.',
+    aliases: ['Kurt', 'Butay', 'Kurt Butay'],
+  },
+  {
+    displayName: 'Rexie Margarette Vargas',
+    email: 'emiisushi1603@gmail.com',
+    skills: 'AI/ML concepts, experimentation, learning-oriented prototyping',
+    summary: 'Rexie explores AI and machine learning ideas for the team.',
+    aliases: ['Rexie', 'Vargas'],
+  },
+  {
+    displayName: 'Karl Castillo',
+    email: 'karlcas721@gmail.com',
+    skills: 'Project management, collaboration, coordination, communication',
+    summary: 'Karl helps organize teamwork and keep delivery moving.',
+    aliases: ['Karl', 'Karl Castillo', 'Castillo'],
+  },
 ];
 
 async function initializeDatabase() {
@@ -232,6 +336,23 @@ async function initializeDatabase() {
           throw error;
         }
       }
+    }
+
+    console.log('\n👥 Inserting member directory data...');
+    for (const member of memberData) {
+      await pool.query(
+        `INSERT INTO group_members (display_name, email, skills, summary, aliases, group_name)
+         VALUES ($1, $2, $3, $4, $5, $6)
+         ON CONFLICT (display_name) DO UPDATE SET
+           email = EXCLUDED.email,
+           skills = EXCLUDED.skills,
+           summary = EXCLUDED.summary,
+           aliases = EXCLUDED.aliases,
+           group_name = EXCLUDED.group_name,
+           updated_at = CURRENT_TIMESTAMP`,
+        [member.displayName, member.email, member.skills, member.summary, member.aliases, 'Group 2']
+      );
+      console.log(`  ✓ Added member: "${member.displayName}"`);
     }
 
     console.log('\n✅ Database initialization complete!\n');

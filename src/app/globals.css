@@ -21,8 +21,6 @@ a {
   margin: 0 auto;
   min-height: 100vh;
   display: grid;
-  gap: 0;
-  padding: 0;
   grid-template-rows: auto 1fr auto;
 }
 
@@ -68,7 +66,7 @@ a {
 
 .portfolio-link:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 16px rgba(168, 85, 247, 0.4);
+  box-shadow: 0 8px 16px rgba(168, 85, 247, 0.35);
 }
 
 .chat-panel {
@@ -76,20 +74,63 @@ a {
   border: none;
   padding: 1.5rem;
   overflow-y: auto;
-  flex: 1;
 }
 
-.composer,
-.portfolio-embed-wrap,
-.portfolio-header {
-  background: rgba(26, 15, 46, 0.6);
-  border: 1px solid rgba(168, 85, 247, 0.2);
-  border-radius: 0.75rem;
+.prompt-strip {
+  margin-bottom: 1rem;
+}
+
+.prompt-label,
+.recent-label {
+  color: #e0d5ff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 0 0 0.75rem;
+}
+
+.prompt-row,
+.recent-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.chip,
+.question-btn,
+.recent-btn {
+  border: 1.5px solid rgba(168, 85, 247, 0.35);
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.18) 0%, rgba(236, 72, 153, 0.1) 100%);
+  border-radius: 0.6rem;
+  padding: 0.6rem 0.9rem;
+  color: #e0d5ff;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.chip:hover,
+.question-btn:hover,
+.recent-btn:hover {
+  border-color: rgba(236, 72, 153, 0.65);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(168, 85, 247, 0.25);
+}
+
+.chip-muted,
+.chip:disabled,
+.question-btn:disabled,
+.recent-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
 }
 
 .empty-state {
   display: grid;
-  gap: 2rem;
+  gap: 1.2rem;
 }
 
 .empty-state > p {
@@ -106,24 +147,7 @@ a {
 
 .starter-grid button,
 .question-btn {
-  border: 1.5px solid rgba(168, 85, 247, 0.3);
-  background: linear-gradient(135deg, rgba(168, 85, 247, 0.15) 0%, rgba(236, 72, 153, 0.1) 100%);
-  border-radius: 0.75rem;
-  padding: 1rem;
   text-align: left;
-  cursor: pointer;
-  color: #e0d5ff;
-  font-weight: 500;
-  transition: all 0.3s ease;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-}
-
-.starter-grid button:hover,
-.question-btn:hover {
-  border-color: rgba(168, 85, 247, 0.6);
-  background: linear-gradient(135deg, rgba(168, 85, 247, 0.25) 0%, rgba(236, 72, 153, 0.2) 100%);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(168, 85, 247, 0.25);
 }
 
 .messages {
@@ -135,14 +159,16 @@ a {
   border-radius: 1rem;
   padding: 1rem;
   animation: slideIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(6px);
+  max-width: 85%;
 }
 
 @keyframes slideIn {
   from {
     opacity: 0;
-    transform: translateY(15px) scale(0.95);
+    transform: translateY(12px) scale(0.98);
   }
+
   to {
     opacity: 1;
     transform: translateY(0) scale(1);
@@ -153,59 +179,71 @@ a {
   background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
   color: #ffffff;
   margin-left: auto;
-  max-width: 85%;
-  border-bottom-right-radius: 0.25rem;
-  box-shadow: 0 4px 12px rgba(168, 85, 247, 0.3);
-  transition: all 0.3s ease;
-}
-
-.msg-user:hover {
-  box-shadow: 0 8px 20px rgba(168, 85, 247, 0.5);
-  transform: translateY(-2px);
-}
-
-.msg-user p {
-  color: #ffffff;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  border-bottom-right-radius: 0.3rem;
+  box-shadow: 0 6px 14px rgba(168, 85, 247, 0.25);
 }
 
 .msg-assistant {
-  background: linear-gradient(135deg, rgba(168, 85, 247, 0.25) 0%, rgba(236, 72, 153, 0.15) 100%);
-  border: 2px solid rgba(168, 85, 247, 0.4);
-  max-width: 85%;
-  border-bottom-left-radius: 0.25rem;
-  box-shadow: 0 4px 12px rgba(168, 85, 247, 0.2);
-  transition: all 0.3s ease;
-}
-
-.msg-assistant:hover {
-  border-color: rgba(168, 85, 247, 0.6);
-  background: linear-gradient(135deg, rgba(168, 85, 247, 0.35) 0%, rgba(236, 72, 153, 0.25) 100%);
-  box-shadow: 0 8px 20px rgba(168, 85, 247, 0.3);
-}
-
-.msg-assistant p {
-  color: #f1f5f9;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.25) 0%, rgba(236, 72, 153, 0.12) 100%);
+  border: 1.5px solid rgba(168, 85, 247, 0.35);
+  border-bottom-left-radius: 0.3rem;
+  box-shadow: 0 4px 12px rgba(168, 85, 247, 0.18);
 }
 
 .msg-role {
-  margin: 0 0 0.5rem;
+  margin: 0;
   font-size: 0.75rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: #e0d5ff;
-  opacity: 0.9;
-  transition: opacity 0.3s ease;
 }
 
-.msg-assistant .msg-role {
+.msg-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.msg-content {
+  margin-top: 0.5rem;
+  line-height: 1.65;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.msg-copy {
+  border: 1px solid rgba(168, 85, 247, 0.45);
+  background: rgba(46, 21, 71, 0.55);
   color: #e0d5ff;
+  border-radius: 999px;
+  padding: 0.25rem 0.65rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-.msg:hover .msg-role {
-  opacity: 1;
+.msg-copy:hover {
+  border-color: rgba(236, 72, 153, 0.75);
+  transform: translateY(-1px);
+}
+
+.recent-questions {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.15) 0%, rgba(236, 72, 153, 0.1) 100%);
+  border-radius: 0.75rem;
+  border: 1.5px solid rgba(168, 85, 247, 0.3);
+}
+
+.composer,
+.portfolio-embed-wrap,
+.portfolio-header {
+  background: rgba(26, 15, 46, 0.6);
+  border: 1px solid rgba(168, 85, 247, 0.2);
+  border-radius: 0.75rem;
 }
 
 .composer {
@@ -214,14 +252,19 @@ a {
   gap: 0.75rem;
   padding: 1rem;
   margin: 0 1.5rem 1.5rem;
-  border-radius: 1.25rem;
+  border-radius: 1.1rem;
+}
+
+.composer-input {
+  min-width: 0;
 }
 
 .composer textarea {
   width: 100%;
   resize: none;
   min-height: 2.5rem;
-  max-height: 6rem;
+  max-height: 8rem;
+  overflow-y: auto;
   border: 1px solid rgba(168, 85, 247, 0.3);
   border-radius: 0.75rem;
   padding: 0.75rem;
@@ -231,35 +274,38 @@ a {
 }
 
 .composer textarea::placeholder {
-  color: #64748b;
+  color: #94a3b8;
 }
 
 .composer textarea:focus {
   outline: none;
   border-color: rgba(168, 85, 247, 0.6);
-  background: rgba(15, 23, 42, 0.95);
+}
+
+.composer-meta {
+  margin-top: 0.4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.72rem;
+  color: #c4b5fd;
+  padding: 0 0.15rem;
 }
 
 .composer button {
   border: none;
   border-radius: 0.75rem;
-  padding: 0 1.5rem;
+  padding: 0 1.25rem;
   background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
   color: #fff;
   font-weight: 700;
   cursor: pointer;
-  font-size: 0.9rem;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(168, 85, 247, 0.2);
+  transition: all 0.25s ease;
 }
 
 .composer button:hover {
-  transform: scale(1.05) translateY(-1px);
-  box-shadow: 0 8px 20px rgba(168, 85, 247, 0.4);
-}
-
-.composer button:active {
-  transform: scale(0.98);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(168, 85, 247, 0.35);
 }
 
 .composer button:disabled {
@@ -280,7 +326,6 @@ a {
   border: 0;
 }
 
-/* Typing Indicator Animation */
 .typing-indicator {
   display: flex;
   gap: 0.4rem;
@@ -289,9 +334,9 @@ a {
 }
 
 .typing-indicator span {
-  width: 0.6rem;
-  height: 0.6rem;
-  background: #a855f7;
+  width: 0.55rem;
+  height: 0.55rem;
+  background: #c084fc;
   border-radius: 50%;
   animation: typing 1.4s infinite;
 }
@@ -305,13 +350,16 @@ a {
 }
 
 @keyframes typing {
-  0%, 60%, 100% {
+  0%,
+  60%,
+  100% {
     opacity: 0.3;
     transform: translateY(0);
   }
+
   30% {
     opacity: 1;
-    transform: translateY(-0.8rem);
+    transform: translateY(-0.45rem);
   }
 }
 
@@ -341,69 +389,7 @@ a {
   border: 0;
 }
 
-/* Recent questions */
-.recent-questions {
-  margin-bottom: 1rem;
-  padding: 1rem;
-  background: linear-gradient(135deg, rgba(168, 85, 247, 0.15) 0%, rgba(236, 72, 153, 0.1) 100%);
-  border-radius: 0.75rem;
-  border: 1.5px solid rgba(168, 85, 247, 0.3);
-  transition: all 0.3s ease;
-}
-
-.recent-questions:hover {
-  border-color: rgba(168, 85, 247, 0.5);
-  background: linear-gradient(135deg, rgba(168, 85, 247, 0.2) 0%, rgba(236, 72, 153, 0.15) 100%);
-}
-
-.recent-label {
-  color: #e0d5ff;
-  font-size: 0.75rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  margin: 0 0 0.75rem;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-}
-
-.recent-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 0.5rem;
-}
-
-.recent-btn {
-  border: 1.5px solid rgba(168, 85, 247, 0.4);
-  background: linear-gradient(135deg, rgba(168, 85, 247, 0.2) 0%, rgba(236, 72, 153, 0.1) 100%);
-  border-radius: 0.5rem;
-  padding: 0.5rem 0.75rem;
-  color: #e0d5ff;
-  font-weight: 500;
-  font-size: 0.85rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-}
-
-.recent-btn:hover,
-.recent-btn:focus {
-  border-color: rgba(236, 72, 153, 0.7);
-  background: linear-gradient(135deg, rgba(168, 85, 247, 0.3) 0%, rgba(236, 72, 153, 0.3) 100%);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(168, 85, 247, 0.25);
-}
-
-.recent-btn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-  transform: none;
-}
-
 @media (max-width: 768px) {
-  .shell {
-    grid-template-rows: auto 1fr auto;
-  }
-
   .topbar,
   .portfolio-header {
     flex-direction: column;
@@ -415,8 +401,7 @@ a {
     padding: 1rem;
   }
 
-  .msg-user,
-  .msg-assistant {
+  .msg {
     max-width: 92%;
   }
 
@@ -425,8 +410,14 @@ a {
     margin: 0 1rem 1rem;
   }
 
-  .composer button {
-    min-height: 2.75rem;
+  .composer-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.2rem;
+  }
+
+  .portfolio-embed {
+    height: calc(100vh - 140px);
   }
 }
 
@@ -436,15 +427,7 @@ a {
   }
 
   .topbar h1 {
-    font-size: 1rem;
-  }
-
-  .eyebrow {
-    font-size: 0.65rem;
-  }
-
-  .composer {
-    margin: 0 0.75rem 1rem;
+    font-size: 1.1rem;
   }
 
   .chat-panel {
@@ -456,7 +439,7 @@ a {
     border-radius: 0.75rem;
   }
 
-  .portfolio-embed {
-    height: calc(100vh - 120px);
+  .composer {
+    margin: 0 0.75rem 1rem;
   }
 }

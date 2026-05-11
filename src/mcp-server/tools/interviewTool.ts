@@ -7,8 +7,6 @@
 
 import type { Tool, InterviewInput } from '../types';
 
-const INTERVIEW_DATA_PATH = './jobs/interview-questions.json';
-
 interface InterviewQuestion {
   id: string;
   question: string;
@@ -27,7 +25,7 @@ export const interviewTool: Tool = {
     memberId: 'optional',
   },
   handler: async (input: Record<string, unknown>): Promise<unknown> => {
-    const { questionId, difficulty = 'intermediate', memberId } = input as InterviewInput;
+    const { questionId, difficulty = 'intermediate', memberId } = input as unknown as InterviewInput;
 
     if (!questionId || typeof questionId !== 'string') {
       throw new Error('questionId is required');

@@ -18,6 +18,22 @@ CREATE TABLE IF NOT EXISTS questions_answers (
 CREATE INDEX IF NOT EXISTS idx_category ON questions_answers(category);
 CREATE INDEX IF NOT EXISTS idx_question ON questions_answers(question);
 
+-- Create group_members table
+CREATE TABLE IF NOT EXISTS group_members (
+  id SERIAL PRIMARY KEY,
+  display_name VARCHAR(200) NOT NULL UNIQUE,
+  email VARCHAR(255) NOT NULL UNIQUE,
+  skills TEXT NOT NULL,
+  summary TEXT NOT NULL,
+  aliases TEXT[] NOT NULL DEFAULT '{}'::text[],
+  group_name VARCHAR(100) DEFAULT 'Group 2',
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE INDEX IF NOT EXISTS idx_group_members_name ON group_members(display_name);
+CREATE INDEX IF NOT EXISTS idx_group_members_email ON group_members(email);
+
 -- Insert sample Q&A data
 INSERT INTO questions_answers (question, answer, category) VALUES
   (
@@ -166,8 +182,107 @@ You can reach out to any team member directly via email:
 
 Feel free to reach out with questions, collaboration opportunities, or feedback!',
     'contact'
+  ),
+  (
+    'Group 2 skills',
+    'Group 2 works across frontend, backend, database, cloud, security, AI/ML, and UI/UX. Ask "What are your skills?" for the full list.',
+    'skills'
+  ),
+  (
+    'Group 2 tech stack',
+    'Our stack includes React, Next.js, Node.js, Laravel, PostgreSQL, AWS, and modern DevOps workflows.',
+    'skills'
+  ),
+  (
+    'Group 2 projects',
+    'Group 2 projects include a Digital Twin chatbot platform, a portfolio site, and cloud-backed full-stack learning builds.',
+    'projects'
+  ),
+  (
+    'Tell me about Group 2',
+    'Group 2 is a collaborative BSIT team from St. Paul University focused on practical software development, teamwork, and continuous learning.',
+    'team'
+  ),
+  (
+    'Group 2 contact',
+    'You can contact Group 2 through the listed member emails. Ask "How can I contact the group?" for full details.',
+    'contact'
   )
 ON CONFLICT (question) DO NOTHING;
+
+-- Insert group member data
+INSERT INTO group_members (display_name, email, skills, summary, aliases, group_name) VALUES
+  (
+    'Rhys Cristian Suyu',
+    'suyskristian@gmail.com',
+    'Front-end development, back-end development, responsive UI, collaborative project work',
+    'Rhys focuses on full-stack web development and collaborative software projects.',
+    ARRAY['Rhys', 'Rhys Suyu', 'Rhys Cristian T. Suyu'],
+    'Group 2'
+  ),
+  (
+    'Pearlshaline Gumiran',
+    'pearlshinegumiran@gmail.com',
+    'Laravel, JavaScript, application logic, team collaboration',
+    'Pearlshaline contributes backend-friendly application development and JavaScript work.',
+    ARRAY['Pearlshaline', 'Pearl Gumiran', 'Gumiran'],
+    'Group 2'
+  ),
+  (
+    'Aniceto Obina Jr',
+    'anicetoakaajobina@gmail.com',
+    'React, Next.js, component design, modern frontend development',
+    'Aniceto works with React and Next.js to build polished user interfaces.',
+    ARRAY['Aniceto', 'Aniceto Obina', 'Obina'],
+    'Group 2'
+  ),
+  (
+    'Eunika Nicole Lasam',
+    'eunikanicole@gmail.com',
+    'SQL, PostgreSQL, data modeling, database support',
+    'Eunika handles database work and supports data organization for the team.',
+    ARRAY['Eunika', 'Eunica', 'Lasam'],
+    'Group 2'
+  ),
+  (
+    'Jake Cardenas',
+    'marijakee@gmail.com',
+    'DevSecOps, security-focused workflows, deployment discipline',
+    'Jake brings a security-minded approach and a DevSecOps perspective.',
+    ARRAY['Jake', 'Cardenas'],
+    'Group 2'
+  ),
+  (
+    'Kurt Jakes Andrei Butay',
+    'kjabutay@gmail.com',
+    'AWS, cloud solutions, deployment support, infrastructure awareness',
+    'Kurt focuses on cloud solutions and AWS-oriented project support.',
+    ARRAY['Kurt', 'Butay', 'Kurt Butay'],
+    'Group 2'
+  ),
+  (
+    'Rexie Margarette Vargas',
+    'emiisushi1603@gmail.com',
+    'AI/ML concepts, experimentation, learning-oriented prototyping',
+    'Rexie explores AI and machine learning ideas for the team.',
+    ARRAY['Rexie', 'Vargas'],
+    'Group 2'
+  ),
+  (
+    'Karl Castillo',
+    'karlcas721@gmail.com',
+    'Project management, collaboration, coordination, communication',
+    'Karl helps organize teamwork and keep delivery moving.',
+    ARRAY['Karl', 'Karl Castillo', 'Castillo'],
+    'Group 2'
+  )
+ON CONFLICT (display_name) DO UPDATE SET
+  email = EXCLUDED.email,
+  skills = EXCLUDED.skills,
+  summary = EXCLUDED.summary,
+  aliases = EXCLUDED.aliases,
+  group_name = EXCLUDED.group_name,
+  updated_at = CURRENT_TIMESTAMP;
 `;
 
 export async function initializeDatabase() {

@@ -22,6 +22,18 @@ export type QA = {
   updated_at: string;
 };
 
+export type GroupMember = {
+  id: number;
+  display_name: string;
+  email: string;
+  skills: string;
+  summary: string;
+  aliases: string[];
+  group_name: string;
+  created_at: string;
+  updated_at: string;
+};
+
 /**
  * Get all Q&A pairs from the database
  */
@@ -104,4 +116,125 @@ export async function addQA(question: string, answer: string, category: string =
     console.error('Error adding Q&A:', error);
     return null;
   }
+}
+
+/**
+ * Get all group members from the database
+ */
+export async function getAllMembers(): Promise<GroupMember[]> {
+  try {
+    const client = getPool();
+    const result = await client.query(
+      'SELECT id, display_name, email, skills, summary, aliases, group_name, created_at, updated_at FROM group_members ORDER BY display_name ASC'
+    );
+    return result.rows as GroupMember[];
+  } catch (error) {
+    console.error('Error fetching members:', error);
+    return [];
+  }
+}
+
+/**
+ * Search members by name, alias, email, skills, or summary keywords
+ */
+export async function searchMembers(query: string): Promise<GroupMember[]> {
+  try {
+    const client = getPool();
+    const result = await client.query(
+      `SELECT id, display_name, email, skills, summary, aliases, group_name, created_at, updated_at
+       FROM group_members
+       WHERE display_name ILIKE $1
+          OR email ILIKE $1
+          OR skills ILIKE $1
+          OR summary ILIKE $1
+          OR EXISTS (
+            SELECT 1
+            FROM unnest(aliases) alias
+            WHERE alias ILIKE $1
+          )
+       ORDER BY
+         CASE
+           WHEN display_name ILIKE $1 THEN 0
+           WHEN EXISTS (
+             SELECT 1
+             FROM unnest(aliases) alias
+             WHERE alias ILIKE $1
+           ) THEN 1
+           ELSE 2
+         END,
+         display_name ASC`,
+      [`%${query}%`]
+    );
+    return result.rows as GroupMember[];
+  } catch (error) {
+    console.error('Error searching members:', error);
+    return [];
+  }
+}
+
+/**
+ * Find the best member match for a natural language question
+ */
+export async function findMemberMatch(query: string): Promise<GroupMember | null> {
+  const normalizedQuery = query.trim().toLowerCase();
+  if (!normalizedQuery) {
+    return null;
+  }
+
+  const members = await getAllMembers();
+  if (members.length === 0) {
+    return null;
+  }
+
+  const stopWords = new Set([
+    'skill',
+    'skills',
+    'info',
+    'information',
+    'about',
+    'email',
+    'contact',
+    'group',
+    'member',
+    'members',
+    'project',
+    'projects',
+    'the',
+    'of',
+  ]);
+
+  let bestMatch: GroupMember | null = null;
+  let bestScore = 0;
+
+  for (const member of members) {
+    const candidates = [member.display_name, ...member.aliases]
+      .map((item) => item.toLowerCase().trim())
+      .filter(Boolean);
+
+    let score = 0;
+
+    for (const candidate of candidates) {
+      if (normalizedQuery.includes(candidate)) {
+        score += 5;
+      }
+
+      const parts = candidate
+        .split(/\s+/)
+        .map((part) => part.trim())
+        .filter((part) => part.length >= 3 && !stopWords.has(part));
+
+      for (const part of parts) {
+        if (normalizedQuery.includes(part)) {
+          score += 1;
+        }
+      }
+    }
+
+    if (score > bestScore) {
+      bestScore = score;
+      bestMatch = member;
+    }
+  }
+
+  return bestScore > 0 ? bestMatch : null;
 }
