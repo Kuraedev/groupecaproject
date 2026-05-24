@@ -87,3 +87,40 @@ Deliver the Digital Twin Career Agent in a sequence that matches the approved de
 - Generated content is reviewed before publishing.
 - The public portfolio is accessible and fast.
 - The repo contains visible design and implementation documentation.
+
+---
+
+## 8. Week 2 Iteration Review
+
+**Review Date:** May 2026  
+**Status:** In Progress
+
+### What Was Completed in Week 2
+
+- Scaffolded the Next.js application structure and confirmed route layout.
+- Added initial Supabase schema definitions for `profiles`, `projects`, and `experiences` tables.
+- Established the AI context loader foundation so that only relevant profile facts are sent per request.
+- Validated that the `/api/chat` route returns structured responses consistent with the system prompt rules in `agents.md`.
+
+### Decisions Made
+
+| Decision | Rationale |
+|----------|-----------|
+| Keep AI temperature at 0.7 | Balances creativity with factual consistency across repeated queries |
+| Cache responses for 24 hours | Reduces API cost while keeping profile answers fresh enough for daily updates |
+| Validate AI output server-side before delivery | Prevents hallucinated claims from reaching the public portfolio page |
+
+### Issues Identified and Actions
+
+| Issue | Action |
+|-------|--------|
+| Profile editor form missing field-level validation | Scheduled for Phase 2 completion — tracked in `docs/prd.md` AC-01 |
+| PDF export not yet scoped in detail | Confirmed as a Phase 5 (low priority) item; no impact on current sprint |
+| Analytics page placeholder only | Will be implemented after the public portfolio is stable (Phase 4) |
+
+### Next Steps for Week 3
+
+- Complete the profile editor UI with field validation (Phase 2).
+- Wire AI generation to the context loader and test with at least two audience types (Phase 3).
+- Begin the public portfolio render pass (Phase 4 kickoff).
+- Review agent behavior rules in `agents.md` against actual API responses and update guardrails if needed.

@@ -32,6 +32,7 @@ See [SETUP_COMPLETE.md](SETUP_COMPLETE.md) for installation and setup instructio
 ## Documentation
 
 - [Product Requirements](docs/prd.md)
+- [Implementation Plan & Week 2 Review](docs/implementation-plan.md)
 - [Agents & Architecture](agents.md)
 - [Migration Guide](MIGRATION_GUIDE.md)
 
